@@ -1,15 +1,24 @@
 // Pre-state grayscale colors used in other variables
 
-$gray-800: #343a40;
+$gray-800: #1f2933;
 
 // Override Bootstrap color system
+// A clean, bright palette: crisp white surfaces, slate text, teal accent
+// (inspired by brittanychiang.com's structure, translated to a light theme)
 
-$orange: #bd5d38;
+$teal: #0f766e;
 
 // Override Bootstrap default state colors
 
-$primary: $orange;
+$primary: $teal;
 
 // Override Bootstrap yiq lightness value
 
 $yiq-contrasted-threshold: 205;
+
+// Custom tokens used across components (not part of Bootstrap's map)
+
+$body-bg-custom: #fbfcfd;
+$surface-bg: #ffffff;
+$border-subtle: #e5e9ec;
+$text-muted-custom: #5b6470;

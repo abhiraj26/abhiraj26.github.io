@@ -1,8 +1,16 @@
 // Global styling for this template
 
+::selection {
+    background-color: fade-out($primary, 0.75);
+    color: $gray-800;
+}
+
 body {
     padding-top: $navbar-base-height;
-    color: $gray-600;
+    color: $text-muted-custom;
+    background-color: $body-bg-custom;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 @include media-breakpoint-up(lg) {
     body {
@@ -18,6 +26,7 @@ h4,
 h5,
 h6 {
     text-transform: uppercase;
+    color: $gray-800;
 }
 
 h1 {
@@ -34,4 +43,21 @@ p.lead {
     text-transform: uppercase;
     font-weight: 500;
     font-size: 1.5rem;
+    color: $text-muted-custom;
+}
+
+// Small monospace accent used for dates, meta text, and tags
+.mono-accent {
+    font-family: $font-family-mono;
+    font-size: 0.85rem;
+    letter-spacing: 0.02rem;
+    color: $primary;
+}
+
+a {
+    transition: color 0.15s ease-in-out;
+}
+
+hr {
+    border-color: $border-subtle;
 }

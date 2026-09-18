@@ -18,6 +18,7 @@ html(lang='en')
         // Google fonts
         link(href='https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700', rel='stylesheet', type='text/css')
         link(href='https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i', rel='stylesheet', type='text/css')
+        link(href='https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap', rel='stylesheet', type='text/css')
 
         // Core theme CSS (includes Bootstrap)
         link(href='css/styles.css', rel='stylesheet')
@@ -25,7 +26,7 @@ html(lang='en')
     body#page-top
 
         // Navigation
-        nav#sideNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
+        nav#sideNav.navbar.navbar-expand-lg.navbar-light.bg-white.fixed-top
             a.navbar-brand.js-scroll-trigger(href='#page-top')
                 span.d-block.d-lg-none Abhiraj Smit
                 span.d-none.d-lg-block
@@ -55,6 +56,18 @@ html(lang='en')
                 // hitwebcounter Code START
                 a(href='https://www.hitwebcounter.com', target='_blank')
                     img(src='https://hitwebcounter.com/counter/counter.php?page=7671208&style=0025&nbdigits=5&type=page&initCount=0', title='Total Website Hits', alt='Web Hits', border='0')
+
+            .sidenav-social.d-none.d-lg-flex
+                a.sidenav-social-icon(href='https://www.linkedin.com/in/abhirajsmit/', target='_blank', aria-label='LinkedIn')
+                    i.fab.fa-linkedin-in
+                a.sidenav-social-icon(href='https://github.com/abhiraj26', target='_blank', aria-label='GitHub')
+                    i.fab.fa-github
+                a.sidenav-social-icon(href='mailto:abhirajsmit@gmail.com', target='_blank', aria-label='Email')
+                    i.fa.fa-envelope
+                a.sidenav-social-icon(href='https://devpost.com/abhirajsmit', target='_blank', aria-label='Devpost')
+                    i.fa.fa-laptop
+                a.sidenav-social-icon(href='https://www.kaggle.com/abhirajsmit/', target='_blank', aria-label='Kaggle')
+                    i.fab.fa-kaggle
 
         // Page Content
         .container-fluid.p-0
