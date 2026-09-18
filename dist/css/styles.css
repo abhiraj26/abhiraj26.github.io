@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
 * Start Bootstrap - Resume v6.0.1 (https://startbootstrap.com/template-overviews/resume)
-* Copyright 2013-2020 Start Bootstrap
+* Copyright 2013-2026 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE)
 */
 /*!
@@ -10105,6 +10105,20 @@ p.lead {
 
 .dev-icons {
   font-size: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.dev-icons li.list-inline-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5.5rem;
+  margin: 0 0.25rem 1.5rem;
+}
+.dev-icons .skill-label {
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  color: #495057;
 }
 
 section.resume-section {

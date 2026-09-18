@@ -5,10 +5,10 @@ html(lang='en')
 
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-        meta(name='description', content='')
-        meta(name='author', content='')
+        meta(name='description', content='Resume of Abhiraj Smit - Software Engineer')
+        meta(name='author', content='Abhiraj Smit')
 
-        title Resume - Start Bootstrap Theme
+        title Abhiraj Smit - Resume
 
         link(rel='icon', type='image/x-icon', href='assets/img/favicon.ico')
 
@@ -27,7 +27,7 @@ html(lang='en')
         // Navigation
         nav#sideNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
             a.navbar-brand.js-scroll-trigger(href='#page-top')
-                span.d-block.d-lg-none Clarence Taylor
+                span.d-block.d-lg-none Abhiraj Smit
                 span.d-none.d-lg-block
                     img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='assets/img/profile.jpg', alt='')
             button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
@@ -43,7 +43,7 @@ html(lang='en')
                     li.nav-item
                         a.nav-link.js-scroll-trigger(href='#skills') Skills
                     li.nav-item
-                        a.nav-link.js-scroll-trigger(href='#interests') Interests
+                        a.nav-link.js-scroll-trigger(href='#projects') Projects
                     li.nav-item
                         a.nav-link.js-scroll-trigger(href='#awards') Awards
 
@@ -54,17 +54,17 @@ html(lang='en')
             section#about.resume-section
                 .resume-section-content
                     h1.mb-0
-                        | Clarence 
-                        span.text-primary Taylor
+                        | Abhiraj
+                        span.text-primary Smit
                     .subheading.mb-5
-                        | 3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 · 
-                        a(href='mailto:name@email.com') name@email.com
+                        | Stony Brook, New York ·
+                        a(href='mailto:abhirajsmit@gmail.com') abhirajsmit@gmail.com
                     p.lead.mb-5
-                        | I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.
+                        | Software Engineer with an MS in Computer Science from Stony Brook University and a BE from Birla Institute of Technology, Mesra. Experienced in building large-scale data migration systems, distributed pipelines and cloud infrastructure, with prior roles at Goldman Sachs, Amazon Web Services and GeeksforGeeks.
                     .social-icons
-                        a.social-icon(href='#')
+                        a.social-icon(href='https://www.linkedin.com/in/abhirajsmit/', target='_blank', rel='noopener')
                             i.fab.fa-linkedin-in
-                        a.social-icon(href='#')
+                        a.social-icon(href='https://github.com/abhiraj26', target='_blank', rel='noopener')
                             i.fab.fa-github
                         a.social-icon(href='#')
                             i.fab.fa-twitter
@@ -80,39 +80,48 @@ html(lang='en')
 
                     .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
                         .flex-grow-1
-                            h3.mb-0 Senior Web Developer
-                            .subheading.mb-3 Intelitec Solutions
-                            p
-                                | Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+                            h3.mb-0 Software Developer Intern
+                            .subheading.mb-3 Amazon Web Services, Seattle &mdash; AWS EC2 Security
+                            ul
+                                li Designed an end-to-end architecture to enhance customer security by removing outdated data stored in S3 buckets.
+                                li Provided an API and CLI option for clients to set the number of days they want data to be stored.
                         .flex-shrink-0
-                            span.text-primary March 2013 - Present
+                            span.text-primary June 2020 - August 2020
 
                     .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
                         .flex-grow-1
-                            h3.mb-0 Web Developer
-                            .subheading.mb-3 Intelitec Solutions
-                            p
-                                | Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+                            h3.mb-0 Software Engineer
+                            .subheading.mb-3 Goldman Sachs, Bengaluru &mdash; Document Lake, Pricing Technology
+                            p Document Lake is a centralized internal platform for storing documents in Elastic Cloud Storage (ECS), providing search and OCR capabilities.
+                            ul
+                                li Conceived and implemented the plan to migrate an older system to Document Lake; the migrated system processes up to 10 million files and 1TB of data per day, improving throughput by over 80% versus the older system.
+                                li Brainstormed and devised a scalable multithreaded solution using Kafka to migrate files to the cloud using Amazon S3.
+                                li Improvised the migration plan by introducing MongoDB as a staging table to store Kafka offsets and added the ability to replay retained messages from a topic, exposed as a secure REST endpoint via SwaggerUI.
+                                li Developed a Proof of Concept comparing Elasticsearch query retrieval time and complex query support against ECS's built-in bucket search; designed data models, RESTful microservices and configured Elasticsearch clusters.
+                                li Onboarded feeds to EMS (Enterprise Messaging System) Queues, Streams and hybrid pipeline/stream systems that transport vendor data to the primary database.
+                                li Designed Prime View, a UI for operations to view and perform real-time updates to trading data.
                         .flex-shrink-0
-                            span.text-primary December 2011 - March 2013
+                            span.text-primary June 2017 - April 2019
 
                     .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
                         .flex-grow-1
-                            h3.mb-0 Junior Web Designer
-                            .subheading.mb-3 Shout! Media Productions
-                            p
-                                | Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.
+                            h3.mb-0 Summer Intern
+                            .subheading.mb-3 Goldman Sachs, Bengaluru &mdash; DataFactory
+                            ul
+                                li Developed the Tasks UI in AngularJS2 to gather input from Operations, replacing the previous email-based process.
+                                li Streamlined the process by generating tasks at runtime and delegating them to maintain a timely response.
                         .flex-shrink-0
-                            span.text-primary July 2010 - December 2011
+                            span.text-primary May 2016 - June 2016
 
                     .d-flex.flex-column.flex-md-row.justify-content-between
                         .flex-grow-1
-                            h3.mb-0 Web Design Intern
-                            .subheading.mb-3 Shout! Media Productions
-                            p
-                                | Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
+                            h3.mb-0 Software Developer Intern / Algorithmic Problem Setter
+                            .subheading.mb-3 GeeksforGeeks, Noida
+                            ul
+                                li Added new features to practice.geeksforgeeks.org and created new algorithmic problems for their contests.
+                                li Taught algorithms and data structures in offline Geeks classes and managed their live online courses, which had over 3500+ students.
                         .flex-shrink-0
-                            span.text-primary September 2008 - June 2010
+                            span.text-primary Dec 2015 - Jan 2015, Apr 2019 - Jul 2019
 
             hr.m-0
 
@@ -123,20 +132,23 @@ html(lang='en')
 
                     .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
                         .flex-grow-1
-                            h3.mb-0 University of Colorado Boulder
-                            .subheading.mb-3 Bachelor of Science
-                            div Computer Science - Web Development Track
-                            p GPA: 3.23
+                            h3.mb-0 Stony Brook University, New York
+                            .subheading.mb-3 Master of Science, Computer Science
+                            div Coursework: Analysis of Algorithms, Natural Language Processing, Machine Learning, Data Science, Probability &amp; Statistics, Database Systems
+                            div Teaching Assistant: Object Oriented Programming - Java (CSE 114)
+                            div ACM ICPC 2019: Represented Stony Brook at the Greater New York Regional Contest
+                            p GPA: 3.96/4.0
                         .flex-shrink-0
-                            span.text-primary August 2006 - May 2010
+                            span.text-primary August 2019 - December 2020
 
                     .d-flex.flex-column.flex-md-row.justify-content-between
                         .flex-grow-1
-                            h3.mb-0 James Buchanan High School
-                            .subheading.mb-3 Technology Magnet Program
-                            p GPA: 3.56
+                            h3.mb-0 Birla Institute of Technology, Mesra, India
+                            .subheading.mb-3 Bachelor of Engineering, Information Technology
+                            div Coursework: Operating Systems, Data Structures, Compilers, Data Mining and Applications, Parallel and Distributed Systems, Database Systems, Discrete Mathematics and Graph Theory, Network Security, Theory of Computations
+                            p GPA: 8.39/10.00
                         .flex-shrink-0
-                            span.text-primary August 2002 - May 2006
+                            span.text-primary August 2013 - May 2017
 
             hr.m-0
 
@@ -144,107 +156,161 @@ html(lang='en')
             section#skills.resume-section
                 .resume-section-content
                     h2.mb-5 Skills
-                    .subheading.mb-3 Programming Languages & Tools
+                    .subheading.mb-3 Languages
                     ul.list-inline.dev-icons
                         li.list-inline-item
-                            i.fab.fa-html5
+                            i.fas.fa-code
+                            span.skill-label C
                         li.list-inline-item
-                            i.fab.fa-css3-alt
+                            i.fas.fa-code
+                            span.skill-label C++
+                        li.list-inline-item
+                            i.fab.fa-java
+                            span.skill-label Java
+                        li.list-inline-item
+                            i.fab.fa-python
+                            span.skill-label Python
+                        li.list-inline-item
+                            i.fas.fa-database
+                            span.skill-label MySQL
+                        li.list-inline-item
+                            i.fas.fa-leaf
+                            span.skill-label MongoDB
+                        li.list-inline-item
+                            i.fas.fa-database
+                            span.skill-label DB2
                         li.list-inline-item
                             i.fab.fa-js-square
+                            span.skill-label JavaScript
                         li.list-inline-item
-                            i.fab.fa-angular
+                            i.fab.fa-js
+                            span.skill-label jQuery
                         li.list-inline-item
-                            i.fab.fa-react
+                            i.fab.fa-html5
+                            span.skill-label HTML5
                         li.list-inline-item
-                            i.fab.fa-node-js
+                            i.fab.fa-css3-alt
+                            span.skill-label CSS
                         li.list-inline-item
-                            i.fab.fa-sass
+                            i.fas.fa-terminal
+                            span.skill-label Bash
+                    .subheading.mb-3 Tools & Technologies
+                    ul.list-inline.dev-icons
                         li.list-inline-item
-                            i.fab.fa-less
+                            i.fas.fa-stream
+                            span.skill-label Kafka
                         li.list-inline-item
-                            i.fab.fa-wordpress
+                            i.fab.fa-aws
+                            span.skill-label Amazon S3
                         li.list-inline-item
-                            i.fab.fa-gulp
+                            i.fab.fa-aws
+                            span.skill-label AWS
                         li.list-inline-item
-                            i.fab.fa-grunt
+                            i.fas.fa-exchange-alt
+                            span.skill-label ETL Systems
                         li.list-inline-item
-                            i.fab.fa-npm
-                    .subheading.mb-3 Workflow
-                    ul.fa-ul.mb-0
-                        li
-                            span.fa-li
-                                i.fas.fa-check
-                            | Mobile-First, Responsive Design
-                        li
-                            span.fa-li
-                                i.fas.fa-check
-                            | Cross Browser Testing & Debugging
-                        li
-                            span.fa-li
-                                i.fas.fa-check
-                            | Cross Functional Teams
-                        li
-                            span.fa-li
-                                i.fas.fa-check
-                            | Agile Development & Scrum
+                            i.fas.fa-cubes
+                            span.skill-label Maven
+                        li.list-inline-item
+                            i.fas.fa-search
+                            span.skill-label Elasticsearch
+                        li.list-inline-item
+                            i.fas.fa-leaf
+                            span.skill-label Spring
+                        li.list-inline-item
+                            i.fab.fa-docker
+                            span.skill-label Docker
+                        li.list-inline-item
+                            i.fab.fa-git-alt
+                            span.skill-label Git
+                        li.list-inline-item
+                            i.fas.fa-laptop-code
+                            span.skill-label IntelliJ
+                        li.list-inline-item
+                            i.fab.fa-linux
+                            span.skill-label Ubuntu Linux
+                        li.list-inline-item
+                            i.fas.fa-dharmachakra
+                            span.skill-label Kubernetes
+                        li.list-inline-item
+                            i.fas.fa-chart-line
+                            span.skill-label Kibana
+                        li.list-inline-item
+                            i.fas.fa-brain
+                            span.skill-label TensorFlow
+                        li.list-inline-item
+                            i.fas.fa-list
+                            span.skill-label LogStash
+                        li.list-inline-item
+                            i.fas.fa-file-alt
+                            span.skill-label FileBeat
+                        li.list-inline-item
+                            i.fas.fa-server
+                            span.skill-label Jersey
+                        li.list-inline-item
+                            i.fas.fa-database
+                            span.skill-label Hibernate
+                        li.list-inline-item
+                            i.fab.fa-jenkins
+                            span.skill-label Jenkins
 
             hr.m-0
 
-            // Interests
-            section#interests.resume-section
+            // Projects
+            section#projects.resume-section
                 .resume-section-content
-                    h2.mb-5 Interests
-                    p
-                        | Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.
-                    p.mb-0
-                        | When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the front-end web development world.
+                    h2.mb-5 Selected Academic Projects
+
+                    .mb-4
+                        h3.mb-0 File System Lab
+                        .subheading.mb-2 Prof. Erez Zadok &mdash; Jan 2020 - Dec 2020
+                        ul.mb-0
+                            li Built a log aggregator to collect logs from different host machines and added search to retrieve filtered results.
+                            li Used LogStash, FileBeat, Kafka and Kibana to consolidate and store the results.
+
+                    .mb-4
+                        h3.mb-0 Depression Tendency in Twitter Users
+                        .subheading.mb-2 Natural Language Processing, Prof. Niranjan &mdash; Sep 2020 - Dec 2020
+                        ul.mb-0
+                            li Retrieved tweets using Selenium and scripts, and removed bias from the dataset by manual annotation of tweets.
+                            li Applied BiLSTM with Attention and the state-of-the-art RoBERTa model, achieving 92.5% accuracy.
+
+                    .mb-4
+                        h3.mb-0 Do Popular Movies Endure Over Time?
+                        .subheading.mb-2 Prof. Steven Skiena &mdash; Oct 2019 - Nov 2019
+                        ul.mb-0
+                            li Developed a statistical model to predict the current popularity of old movies using IMDB and Kaggle datasets.
+                            li Applied different machine learning models to calculate the endurance of movies using a designed metric.
+
+                    .mb-4
+                        h3.mb-0 Offline Signature Forgery Detection
+                        .subheading.mb-2 Prof. Akriti Nigam &mdash; Jan 2017 - May 2017
+                        ul.mb-0
+                            li Created a model based on individuals' real and forged signatures, using the CEDAR database to train the model.
+                            li Applied machine learning techniques like SVM and ANN and compared their sensitivity and specificity.
+
+                    .mb-0
+                        h3.mb-0 Music Service Website
+                        .subheading.mb-2 Feb 2015 - Apr 2015
+                        ul.mb-0
+                            li Developed a music streaming website hosted on the college network, with options to add songs and build personalized playlists.
+                            li Delivered back-end RESTful APIs to download songs in this interactive web application.
 
             hr.m-0
 
             // Awards
             section#awards.resume-section
                 .resume-section-content
-                    h2.mb-5 Awards & Certifications
+                    h2.mb-5 Awards & Achievements
                     ul.fa-ul.mb-0
                         li
                             span.fa-li
                                 i.fas.fa-trophy.text-warning
-                            | Google Analytics Certified Developer
+                            | Won first prize in the ACM ICPC regionals selection contest held by Stony Brook University, sponsored by Google.
                         li
                             span.fa-li
                                 i.fas.fa-trophy.text-warning
-                            | Mobile Web Specialist - Google Certification
-                        li
-                            span.fa-li
-                                i.fas.fa-trophy.text-warning
-                            | 1
-                            sup st 
-                            | Place - University of Colorado Boulder - Emerging Tech Competition 2009
-                        li
-                            span.fa-li
-                                i.fas.fa-trophy.text-warning
-                            | 1
-                            sup st 
-                            | Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)
-                        li
-                            span.fa-li
-                                i.fas.fa-trophy.text-warning
-                            | 2
-                            sup nd 
-                            | Place - University of Colorado Boulder - Emerging Tech Competition 2008
-                        li
-                            span.fa-li
-                                i.fas.fa-trophy.text-warning
-                            | 1
-                            sup st 
-                            | Place - James Buchanan High School - Hackathon 2006
-                        li
-                            span.fa-li
-                                i.fas.fa-trophy.text-warning
-                            | 3
-                            sup rd 
-                            | Place - James Buchanan High School - Hackathon 2005
+                            | Runner-up at inter-school chess competition, Delhi '08, and won the team event in the intra-corporate chess tournament at Goldman Sachs '18.
 
         // Bootstrap core JS
         script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
