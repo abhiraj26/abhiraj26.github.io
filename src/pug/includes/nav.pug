@@ -1,0 +1,52 @@
+- var home = (typeof page !== 'undefined' && page === 'education') ? 'index.html' : ''
+- var onEducation = (typeof page !== 'undefined' && page === 'education')
+
+nav#sideNav.navbar.navbar-expand-lg.navbar-light.bg-white.fixed-top
+    a.navbar-brand.js-scroll-trigger(href=home + '#page-top')
+        span.d-block.d-lg-none Abhiraj Smit
+        span.d-none.d-lg-block
+            img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='assets/img/profile.jpg', alt='')
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav
+            li.nav-item
+                a.nav-link.js-scroll-trigger(href=home + '#about') About
+            li.nav-item
+                a.nav-link.js-scroll-trigger(href=home + '#experience') Experience
+            li.nav-item.dropdown
+                a.nav-link.dropdown-toggle(href='#', id='eduDropdown', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', class=onEducation ? 'active' : '') Education
+                .dropdown-menu(aria-labelledby='eduDropdown')
+                    a.dropdown-item.js-scroll-trigger(href='education.html#page-top') Overview
+                    .dropdown-divider
+                    a.dropdown-item.js-scroll-trigger(href='education.html#edu-stonybrook') Stony Brook University
+                    a.dropdown-item.js-scroll-trigger(href='education.html#edu-bitmesra') BIT Mesra
+                    a.dropdown-item.js-scroll-trigger(href='education.html#edu-aissce') AISSCE (12th Board)
+                    a.dropdown-item.js-scroll-trigger(href='education.html#edu-aisse') AISSE (10th Board)
+            li.nav-item
+                a.nav-link.js-scroll-trigger(href=home + '#skills') Skills
+            li.nav-item
+                a.nav-link.js-scroll-trigger(href=home + '#projects') Projects
+            li.nav-item
+                a.nav-link.js-scroll-trigger(href=home + '#awards') Awards
+            li.nav-item
+                a.nav-link.js-scroll-trigger(href=home + '#extracurricular') Activities
+            li.nav-item
+                a.nav-link.js-scroll-trigger(href=home + '#responsibility') Responsibility
+            li.nav-item
+                a.nav-link.js-scroll-trigger(href=home + '#certifications') Certifications
+        // hitwebcounter Code START
+        a(href='https://www.hitwebcounter.com', target='_blank')
+            img(src='https://hitwebcounter.com/counter/counter.php?page=7671208&style=0025&nbdigits=5&type=page&initCount=0', title='Total Website Hits', alt='Web Hits', border='0')
+
+    .sidenav-social.d-none.d-lg-flex
+        a.sidenav-social-icon(href='https://www.linkedin.com/in/abhirajsmit/', target='_blank', aria-label='LinkedIn')
+            i.fab.fa-linkedin-in
+        a.sidenav-social-icon(href='https://github.com/abhiraj26', target='_blank', aria-label='GitHub')
+            i.fab.fa-github
+        a.sidenav-social-icon(href='mailto:abhirajsmit@gmail.com', target='_blank', aria-label='Email')
+            i.fa.fa-envelope
+        a.sidenav-social-icon(href='https://devpost.com/abhirajsmit', target='_blank', aria-label='Devpost')
+            i.fa.fa-laptop
+        a.sidenav-social-icon(href='https://www.kaggle.com/abhirajsmit/', target='_blank', aria-label='Kaggle')
+            i.fab.fa-kaggle

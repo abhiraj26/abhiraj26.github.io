@@ -1,0 +1,290 @@
+- var page = 'education'
+- var pageTitle = 'Education - Abhiraj Smit'
+
+doctype html
+html(lang='en')
+
+    include includes/head.pug
+
+    body#page-top
+
+        include includes/nav.pug
+
+        // Page Content
+        .container-fluid.p-0
+
+            section#education.resume-section
+                .resume-section-content
+                    h2.mb-5 Education
+                    p.text-muted.mb-5
+                        a.js-scroll-trigger(href='index.html') &larr; Back to full resume
+
+                    .mb-5#edu-stonybrook
+                        .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
+                            .flex-grow-1
+                                h3.mb-0 Stony Brook University, New York
+                                .subheading.mb-3 Master of Science, Computer Science
+                                div Coursework: Analysis of Algorithms, Natural Language Processing, Machine Learning, Data Science, Probability &amp; Statistics, Database Systems
+                                p.mb-1
+                                    small.text-muted Analysis of Algorithms: a brief introduction to algorithms learnt in undergrad, followed by a detailed analysis of the Master theorem, Akra&ndash;Bazzi recurrences, polynomial multiplication, Fast Fourier Transforms for point-value multiplication, and deterministic select.
+                                div Teaching Assistant: Object Oriented Programming - Java (CSE 114)
+                                p.mb-2.bg-light.border-left.border-primary.pl-3.py-2(style='border-left-width: 4px !important;')
+                                    strong.text-primary ACM ICPC 2019:
+                                    |  Represented Stony Brook University at the Greater New York Regional Contest, after winning first prize (Rank 1) in the ACM ICPC Selection Contest.
+                                    br
+                                    a(href='https://www3.cs.stonybrook.edu/~compprog/files/2019-ranklist.pdf', target='_blank') Selection Contest Rank List (Rank 1)
+                                    |  &middot;
+                                    a(href='http://acmgnyr.org/year2019/standings.shtml', target='_blank') NY Regionals Standings (Team: SBU-Team-4)
+                                p.mb-2 GPA: 3.96/4.0
+                                table.table.table-sm.table-bordered.w-auto.bg-white.mt-2
+                                    thead
+                                        tr
+                                            th Term
+                                            th Course
+                                            th Description
+                                            th Grade
+                                    tbody
+                                        tr
+                                            td Fall 2019
+                                            td CSE 512
+                                            td Machine Learning
+                                            td A-
+                                        tr
+                                            td Fall 2019
+                                            td CSE 519
+                                            td Data Science Fundamentals
+                                            td A
+                                        tr
+                                            td Fall 2019
+                                            td CSE 538
+                                            td Natural Language Processing
+                                            td A
+                                        tr
+                                            td Fall 2019
+                                            td CSE 548
+                                            td Analysis of Algorithms
+                                            td A
+                                        tr
+                                            td Spring 2020
+                                            td AMS 559
+                                            td Smart Energy in the Info Age
+                                            td A
+                                        tr
+                                            td Spring 2020
+                                            td CSE 523
+                                            td Advanced Project in Computer Science
+                                            td P
+                                        tr
+                                            td Spring 2020
+                                            td CSE 532
+                                            td Theory of Database Systems
+                                            td A
+                                        tr
+                                            td Spring 2020
+                                            td CSE 544
+                                            td Probability &amp; Statistics for Data Scientists
+                                            td A
+                                        tr
+                                            td Spring 2020
+                                            td CSE 642
+                                            td Seminar in Algorithms
+                                            td S
+                                        tr
+                                            td Spring 2020
+                                            td CSE 698
+                                            td Practicum in Teaching
+                                            td A
+                                        tr
+                                            td Summer 2020
+                                            td CSE 596
+                                            td MS Internship Program (Off-Campus)
+                                            td S
+                                        tr
+                                            td Fall 2020
+                                            td CSE 524
+                                            td Advanced Project in Computer Science
+                                            td A
+                                table.table.table-sm.table-bordered.w-auto.bg-white.mt-2
+                                    thead
+                                        tr
+                                            th Term
+                                            th Credits Earned
+                                            th Term GPA
+                                    tbody
+                                        tr
+                                            td Fall 2019
+                                            td 12
+                                            td 3.92
+                                        tr
+                                            td Spring 2020
+                                            td 15
+                                            td 4.00
+                                        tr
+                                            td Summer 2020
+                                            td 1
+                                            td S (Satisfactory, not counted in GPA)
+                                        tr
+                                            td Fall 2020
+                                            td 3
+                                            td 4.00
+                                p.text-muted.mt-2.mb-0
+                                    small Cumulative: 31 credits earned, 3.96/4.0 GPA. P/S grades (Pass/Satisfactory) are not included in GPA computation.
+                                .mt-3
+                                    .d-flex.flex-column.flex-sm-row.justify-content-between
+                                        .flex-grow-1
+                                            strong TOEFL
+                                            |  &mdash; English proficiency test.
+                                        .flex-shrink-0
+                                            span.text-primary Score: 101/120 &middot; Sep 2018
+                                    .d-flex.flex-column.flex-sm-row.justify-content-between.mt-2
+                                        .flex-grow-1
+                                            strong GRE (Graduate Record Examination)
+                                            |  &mdash; required for admission to the MS in Computer Science at Stony Brook University. Division of score: 150 in Verbal and 170 in Quants.
+                                        .flex-shrink-0
+                                            span.text-primary Score: 320/340 &middot; Jun 2018
+                            .flex-shrink-0
+                                span.text-primary August 2019 - December 2020
+
+                    .mb-5#edu-bitmesra
+                        .d-flex.flex-column.flex-md-row.justify-content-between
+                            .flex-grow-1
+                                h3.mb-0 Birla Institute of Technology, Mesra, India
+                                .subheading.mb-3 Bachelor of Engineering, Information Technology
+                                div Coursework: Operating Systems, Data Structures, Compilers, Data Mining and Applications, Parallel and Distributed Systems, Database Systems, Discrete Mathematics and Graph Theory, Network Security, Theory of Computations
+                                p.mb-2 GPA: 8.39/10.00 &mdash; final GPA at the end of 8 semesters (Total Credits: 179).
+                                table.table.table-sm.table-bordered.w-auto.bg-white.mt-2
+                                    thead
+                                        tr
+                                            th Semester
+                                            th Credits Taken
+                                            th GPA
+                                    tbody
+                                        tr
+                                            td 1
+                                            td 29
+                                            td 8.34
+                                        tr
+                                            td 2
+                                            td 30
+                                            td 7.63
+                                        tr
+                                            td 3
+                                            td 22
+                                            td 9.05
+                                        tr
+                                            td 4
+                                            td 23
+                                            td 8.74
+                                        tr
+                                            td 5
+                                            td 23
+                                            td 8.83
+                                        tr
+                                            td 6
+                                            td 22
+                                            td 8.59
+                                        tr
+                                            td 7
+                                            td 24
+                                            td 7.67
+                                        tr
+                                            td 8
+                                            td 6
+                                            td 9.00
+                            .flex-shrink-0
+                                span.text-primary August 2013 - May 2017
+
+                    .mb-5#edu-aissce
+                        .d-flex.flex-column.flex-md-row.justify-content-between
+                            .flex-grow-1
+                                h3.mb-0 AISSCE (Science - Class 12th Board)
+                                .subheading.mb-3 DAV Public School, Shrestha Vihar, Delhi
+                                p.mb-2 Score: 87.4/100
+                                table.table.table-sm.table-bordered.w-auto.bg-white.mt-2
+                                    thead
+                                        tr
+                                            th Subject Code
+                                            th Subject
+                                            th Total
+                                    tbody
+                                        tr
+                                            td 301
+                                            td English Core
+                                            td 88
+                                        tr
+                                            td 041
+                                            td Mathematics
+                                            td 95
+                                        tr
+                                            td 042
+                                            td Physics
+                                            td 79
+                                        tr
+                                            td 043
+                                            td Chemistry
+                                            td 86
+                                        tr
+                                            td 083
+                                            td Computer Science
+                                            td 89
+                            .flex-shrink-0
+                                span.text-primary May 2012
+
+                    #edu-aisse
+                        .d-flex.flex-column.flex-md-row.justify-content-between
+                            .flex-grow-1
+                                h3.mb-0 AISSE, CBSE 10th Board
+                                .subheading.mb-3 DAV Centenary Public School, Chander Nagar, Ghaziabad, U.P.
+                                p.mb-2 Score: 9.8/10
+                                table.table.table-sm.table-bordered.w-auto.bg-white.mt-2
+                                    thead
+                                        tr
+                                            th Subject Code
+                                            th Subject
+                                            th Grade
+                                            th Grade Point (GP)
+                                    tbody
+                                        tr
+                                            td 101
+                                            td English Comm.
+                                            td A2
+                                            td 09 (NINE)
+                                        tr
+                                            td 122
+                                            td Comm. Sanskrit
+                                            td A1
+                                            td 10 (TEN)
+                                        tr
+                                            td 041
+                                            td Mathematics
+                                            td A1
+                                            td 10 (TEN)
+                                        tr
+                                            td 086
+                                            td Science
+                                            td A1
+                                            td 10 (TEN)
+                                        tr
+                                            td 087
+                                            td Social Science
+                                            td A1
+                                            td 10 (TEN)
+                                        tr
+                                            td 085
+                                            td Hindi Course-B
+                                            td A1
+                                            td 10 (TEN)
+                                p.text-muted.mt-2.mb-0
+                                    small 5 subjects were chosen for grading. Hindi Course-B (optional) was not included in the final GPA computation.
+                            .flex-shrink-0
+                                span.text-primary Mar 2010
+
+        // Bootstrap core JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js')
+
+        // Third party plugin JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js')
+
+        // Core theme JS
+        script(src='js/scripts.js')

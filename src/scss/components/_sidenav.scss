@@ -38,6 +38,35 @@
     .navbar-nav .nav-item .nav-link.active {
         color: $primary;
     }
+
+    // Education dropdown
+    .dropdown-menu {
+        text-align: left;
+        border: 1px solid $border-subtle;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(16, 24, 32, 0.1);
+        padding: 0.4rem 0;
+        font-family: $font-family-base;
+    }
+    .dropdown-item {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: $text-muted-custom;
+        padding: 0.5rem 1.1rem;
+
+        &:hover,
+        &:focus {
+            color: $primary;
+            background-color: fade-out($primary, 0.93);
+        }
+    }
+    .dropdown-divider {
+        border-color: $border-subtle;
+        margin: 0.35rem 0;
+    }
+    .dropdown-toggle::after {
+        border-top-color: currentColor;
+    }
 }
 
 .sidenav-social {
@@ -84,8 +113,8 @@
             margin: auto auto 0;
             padding: 0.5rem;
             .img-profile {
-                max-width: 9rem;
-                max-height: 9rem;
+                max-width: 11.5rem;
+                max-height: 11.5rem;
                 border: 0.35rem solid $surface-bg;
                 box-shadow: 0 0 0 1px $border-subtle, 0 0.5rem 1.5rem rgba(15, 118, 110, 0.12);
             }
