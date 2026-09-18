@@ -8,9 +8,9 @@ html(lang='en')
         meta(name='description', content='Resume of Abhiraj Smit - Software Engineer')
         meta(name='author', content='Abhiraj Smit')
 
-        title Abhiraj Smit - Resume
+        title Abhiraj Smit Website
 
-        link(rel='icon', type='image/x-icon', href='assets/img/favicon.ico')
+        link(rel='icon', type='image/png', href='assets/img/favicon.png')
 
         // Font Awesome icons (free version)
         script(src='https://use.fontawesome.com/releases/v5.13.0/js/all.js', crossorigin='anonymous')
@@ -46,6 +46,9 @@ html(lang='en')
                         a.nav-link.js-scroll-trigger(href='#projects') Projects
                     li.nav-item
                         a.nav-link.js-scroll-trigger(href='#awards') Awards
+                // hitwebcounter Code START
+                a(href='https://www.hitwebcounter.com', target='_blank')
+                    img(src='https://hitwebcounter.com/counter/counter.php?page=7671208&style=0025&nbdigits=5&type=page&initCount=0', title='Total Website Hits', alt='Web Hits', border='0')
 
         // Page Content
         .container-fluid.p-0
@@ -57,19 +60,27 @@ html(lang='en')
                         | Abhiraj
                         span.text-primary Smit
                     .subheading.mb-5
-                        | Stony Brook, New York ·
+                        | Seattle, WA ·
                         a(href='mailto:abhirajsmit@gmail.com') abhirajsmit@gmail.com
                     p.lead.mb-5
-                        | Software Engineer with an MS in Computer Science from Stony Brook University and a BE from Birla Institute of Technology, Mesra. Experienced in building large-scale data migration systems, distributed pipelines and cloud infrastructure, with prior roles at Goldman Sachs, Amazon Web Services and GeeksforGeeks.
+                        | Senior software engineer with experience designing and scaling distributed storage and metadata systems in cloud infrastructure. Skilled in leading cross-functional engineering teams, driving large-scale technical migrations, and translating ambiguous requirements into reliable, production-grade systems.
                     .social-icons
-                        a.social-icon(href='https://www.linkedin.com/in/abhirajsmit/', target='_blank', rel='noopener')
+                        a.social-icon(href='https://www.linkedin.com/in/abhirajsmit/', target='_blank')
                             i.fab.fa-linkedin-in
-                        a.social-icon(href='https://github.com/abhiraj26', target='_blank', rel='noopener')
+                        a.social-icon(href='https://github.com/abhiraj26', target='_blank')
                             i.fab.fa-github
-                        a.social-icon(href='#')
+                        a.social-icon(href='mailto:abhirajsmit@gmail.com', target='_blank')
+                            i.fa.fa-envelope
+                        a.social-icon(href='https://devpost.com/abhirajsmit', target='_blank')
+                            i.fa.fa-laptop
+                        a.social-icon(href='https://www.kaggle.com/abhirajsmit/', target='_blank')
+                            i.fab.fa-kaggle
+                        a.social-icon(href='https://twitter.com/Abhirajsmit', target='_blank')
                             i.fab.fa-twitter
-                        a.social-icon(href='#')
+                        a.social-icon(href='https://www.facebook.com/abhiraj.smit', target='_blank')
                             i.fab.fa-facebook-f
+                        a.social-icon(href='https://www.quora.com/profile/Abhiraj-Smit', target='_blank')
+                            i.fab.fa-quora
 
             hr.m-0
 
@@ -77,6 +88,22 @@ html(lang='en')
             section#experience.resume-section
                .resume-section-content
                     h2.mb-5 Experience
+
+                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
+                        .flex-grow-1
+                            h3.mb-0 Senior Member of Technical Staff (Project Lead)
+                            .subheading.mb-3 Oracle Cloud Infrastructure, Seattle &mdash; Repair Management / Object Storage
+                            ul
+                                li Led a customer-facing link repair initiative, defining process flows and aligning engineering, operations, and support teams on resolution strategy.
+                            p.font-italic.mb-2 Senior Member of Technical Staff &ndash; Software Developer, Object Storage Metadata Service
+                            ul
+                                li Designed a rebalancing and resharding solution based on customer load to dynamically balance buckets and objects across shards.
+                                li Delivered critical customer features including Archive Tier Sunset and Embargo for all customer APIs, and improved list API latency by implementing an automated index-rebuild.
+                                li Spearheaded the strategic sunset of the OCI Archive Tier, orchestrating the migration of all legacy resources to Standard and Infrequent Access tiers, simplifying storage tiering, improving metering, and reducing long-term operational complexity.
+                                li Improved developer productivity by leading a repo split and JDK 17 upgrade for the object storage monolithic codebase.
+                                li Led a team of 5 engineers across the US and IDC, orchestrating the decoupling of monolithic repositories and services and directing the deployment of critical metadata infrastructure; spearheaded a high-priority task force to drive the enterprise-wide migration from Java 8 to Java 17, ensuring security compliance and performance optimization.
+                        .flex-shrink-0
+                            span.text-primary February 2021 - Present
 
                     .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
                         .flex-grow-1
@@ -90,7 +117,7 @@ html(lang='en')
 
                     .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
                         .flex-grow-1
-                            h3.mb-0 Software Engineer
+                            h3.mb-0 Technical Analyst
                             .subheading.mb-3 Goldman Sachs, Bengaluru &mdash; Document Lake, Pricing Technology
                             p Document Lake is a centralized internal platform for storing documents in Elastic Cloud Storage (ECS), providing search and OCR capabilities.
                             ul
@@ -253,6 +280,26 @@ html(lang='en')
                         li.list-inline-item
                             i.fab.fa-jenkins
                             span.skill-label Jenkins
+                    .subheading.mb-3 Leadership
+                    ul.list-inline.dev-icons
+                        li.list-inline-item
+                            i.fas.fa-clipboard-check
+                            span.skill-label Ownership & Accountability
+                        li.list-inline-item
+                            i.fas.fa-lightbulb
+                            span.skill-label Technical Decision-Making
+                        li.list-inline-item
+                            i.fas.fa-handshake
+                            span.skill-label Influence Without Authority
+                        li.list-inline-item
+                            i.fas.fa-chalkboard-teacher
+                            span.skill-label Mentorship & Talent Development
+                        li.list-inline-item
+                            i.fas.fa-compass
+                            span.skill-label Execution Under Ambiguity
+                        li.list-inline-item
+                            i.fas.fa-sitemap
+                            span.skill-label Process Design
 
             hr.m-0
 
