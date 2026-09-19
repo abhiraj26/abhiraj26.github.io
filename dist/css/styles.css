@@ -10124,6 +10124,10 @@ hr {
   color: #5b6470;
   padding: 0.5rem 1.1rem;
 }
+#sideNav .dropdown-item.active {
+  color: #0f766e;
+  background-color: rgba(15, 118, 110, 0.1);
+}
 #sideNav .dropdown-item:hover, #sideNav .dropdown-item:focus {
   color: #0f766e;
   background-color: rgba(15, 118, 110, 0.07);
@@ -10134,6 +10138,23 @@ hr {
 }
 #sideNav .dropdown-toggle::after {
   border-top-color: currentColor;
+}
+#sideNav .sidenav-subnav-heading {
+  font-family: "JetBrains Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  color: #0f766e;
+  margin-top: 0.85rem;
+  padding: 0 1rem;
+}
+#sideNav .sidenav-subnav-link {
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+  padding-left: 1.5rem !important;
 }
 
 .sidenav-social {
