@@ -1,0 +1,37 @@
+- var page = 'responsibility'
+- var pageTitle = 'Responsibility - Abhiraj Smit'
+
+doctype html
+html(lang='en')
+
+    include includes/head.pug
+
+    body#page-top
+
+        include includes/nav.pug
+
+        // Page Content
+        .container-fluid.p-0
+
+            section#responsibility.resume-section
+                .resume-section-content
+                    h2.mb-5 Responsibility
+                    p.text-muted.mb-5
+                        a.js-scroll-trigger(href='index.html') &larr; Back to full resume
+                    .d-flex.flex-column.flex-md-row.justify-content-between
+                        .flex-grow-1
+                            h3.mb-0 Team Leader
+                            .subheading.mb-3 Institute of Engineering and Technology (IET), BIT Mesra
+                            p My role as a team coordinator included organizing workshops and leading the team to deliver them. The club conducts various workshops and events teaching C, C++, Java, Web Development, Android, MATLAB, Linux, etc.
+                        .flex-shrink-0
+                            span.text-primary August 2015 - May 2016
+
+        // Bootstrap core JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js')
+
+        // Third party plugin JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js')
+
+        // Core theme JS
+        script(src='js/scripts.js')
