@@ -1,48 +1,55 @@
 - var subPages = ['education', 'awards', 'extracurricular', 'responsibility']
 - var onSubPage = (typeof page !== 'undefined' && subPages.indexOf(page) !== -1)
-- var home = onSubPage ? 'index.html' : ''
-- var moreLabels = { education: 'Education', awards: 'Awards & Achievements', extracurricular: 'Activities', responsibility: 'Responsibility' }
-- var moreLabel = onSubPage ? moreLabels[page] : 'More'
 - var onEducation = (typeof page !== 'undefined' && page === 'education')
+- var pageHeadings = { awards: 'Awards & Achievements', extracurricular: 'Extra Curricular Activities', responsibility: 'Responsibility' }
 
 nav#sideNav.navbar.navbar-expand-lg.navbar-light.bg-white.fixed-top
-    a.navbar-brand.js-scroll-trigger(href=home + '#page-top')
+    a.navbar-brand.js-scroll-trigger(href=onSubPage ? 'index.html#page-top' : '#page-top')
         span.d-block.d-lg-none Abhiraj Smit
         span.d-none.d-lg-block
             img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='assets/img/profile.jpg', alt='')
     button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
-        ul.navbar-nav
-            li.nav-item
-                a.nav-link.js-scroll-trigger(href=home + '#about') About
-            li.nav-item
-                a.nav-link.js-scroll-trigger(href=home + '#experience') Experience
-            li.nav-item
-                a.nav-link.js-scroll-trigger(href=home + '#skills') Skills
-            li.nav-item
-                a.nav-link.js-scroll-trigger(href=home + '#projects') Projects
-            li.nav-item
-                a.nav-link.js-scroll-trigger(href=home + '#certifications') Certifications
-            li.nav-item.dropdown
-                a.nav-link.dropdown-toggle(href='#', id='moreDropdown', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', class=onSubPage ? 'active' : '')= moreLabel
-                .dropdown-menu(aria-labelledby='moreDropdown')
-                    a.dropdown-item.js-scroll-trigger(href='education.html#page-top', class=page === 'education' ? 'active' : '') Education
-                    a.dropdown-item.js-scroll-trigger(href='awards.html', class=page === 'awards' ? 'active' : '') Awards &amp; Achievements
-                    a.dropdown-item.js-scroll-trigger(href='extracurricular.html', class=page === 'extracurricular' ? 'active' : '') Extra Curricular Activities
-                    a.dropdown-item.js-scroll-trigger(href='responsibility.html', class=page === 'responsibility' ? 'active' : '') Responsibility
-
-            if onEducation
+        if onSubPage
+            ul.navbar-nav
                 li.nav-item
-                    a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#page-top') Overview
+                    a.nav-link.js-scroll-trigger(href='index.html#page-top')
+                        i.fas.fa-arrow-left.mr-1
+                        |  Back to Resume
+                if onEducation
+                    li.sidenav-subnav-heading Education
+                    li.nav-item
+                        a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#page-top') Overview
+                    li.nav-item
+                        a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#edu-stonybrook') Stony Brook University
+                    li.nav-item
+                        a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#edu-bitmesra') BIT Mesra
+                    li.nav-item
+                        a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#edu-aissce') AISSCE
+                    li.nav-item
+                        a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#edu-aisse') AISSE
+                else
+                    li.sidenav-subnav-heading= pageHeadings[page]
+        else
+            ul.navbar-nav
                 li.nav-item
-                    a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#edu-stonybrook') Stony Brook University
+                    a.nav-link.js-scroll-trigger(href='#about') About
                 li.nav-item
-                    a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#edu-bitmesra') BIT Mesra
+                    a.nav-link.js-scroll-trigger(href='#experience') Experience
                 li.nav-item
-                    a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#edu-aissce') AISSCE
+                    a.nav-link.js-scroll-trigger(href='#skills') Skills
                 li.nav-item
-                    a.nav-link.sidenav-subnav-link.js-scroll-trigger(href='education.html#edu-aisse') AISSE
+                    a.nav-link.js-scroll-trigger(href='#projects') Projects
+                li.nav-item
+                    a.nav-link.js-scroll-trigger(href='#certifications') Certifications
+                li.nav-item.dropdown
+                    a.nav-link.dropdown-toggle(href='#', id='moreDropdown', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') More
+                    .dropdown-menu(aria-labelledby='moreDropdown')
+                        a.dropdown-item.js-scroll-trigger(href='education.html#page-top') Education
+                        a.dropdown-item.js-scroll-trigger(href='awards.html') Awards &amp; Achievements
+                        a.dropdown-item.js-scroll-trigger(href='extracurricular.html') Extra Curricular Activities
+                        a.dropdown-item.js-scroll-trigger(href='responsibility.html') Responsibility
         // hitwebcounter Code START
         a(href='https://www.hitwebcounter.com', target='_blank')
             img(src='https://hitwebcounter.com/counter/counter.php?page=7671208&style=0025&nbdigits=5&type=page&initCount=0', title='Total Website Hits', alt='Web Hits', border='0')
