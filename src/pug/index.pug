@@ -50,17 +50,27 @@ html(lang='en')
 
                     .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
                         .flex-grow-1
-                            h3.mb-0 Senior Member of Technical Staff (Project Lead)
-                            .subheading.mb-3 Oracle Cloud Infrastructure, Seattle &mdash; Repair Management / Object Storage
+                            h3.mb-0 Technical Lead
+                            .subheading.mb-3 Oracle Cloud Infrastructure, Seattle
+                            p.mb-3 Technical lead building distributed control planes for AI infrastructure and cloud storage. Leads ambiguous, cross-organizational programs from architecture through production operations.
+                            p.font-italic.mb-2 Repair Management
                             ul
-                                li Led a customer-facing link repair initiative, defining process flows and aligning engineering, operations, and support teams on resolution strategy.
-                            p.font-italic.mb-2 Senior Member of Technical Staff &ndash; Software Developer, Object Storage Metadata Service
+                                li Architected an end-to-end GPU fabric link-repair workflow spanning 7+ backend systems and organizations, enabling targeted replacement and validation of 9,191 interfaces across 8,449 compute trays in seven months, saving approximately 1,000+ hours of manual verification and eliminating the risk of manual-process errors.
+                                li Led a four-engineer team and mentored three engineers to deliver event-driven switch-link repair orchestration, replacing poll-based coordination with Kafka events and enforcing repair deduplication across both endpoints of a physical link.
+                                li Established a weekly operational-review program and global on-call handoffs that reduced the unresolved high-severity backlog by 80&ndash;82% (66 to 12) and aged high-severity tickets by approximately 94% (64 to 4).
+                                li Increased resolution throughput from approximately 1.5 to 6.2 tickets per day &mdash; roughly 4x &mdash; shifting the organization from accumulating backlog to resolving more issues than it received.
+                                li Reduced p90 resolution time by approximately 64%, from 78.8 to 28.1 days, and reduced average resolution time by approximately 42%, from 18.4 to 10.7 days.
+                                li Designed idempotent, lease-based batch automation that processed 76,946 repairs across 2,025 racks, safely coordinating inventory, custody, customer visibility, ticketing, and post-repair validation.
+                                li Led two engineers in onboarding 30 datasets to a standardized analytics platform, resulting in 34 production pipelines that exported more than 15.5 million repair-domain records for leadership forecasting and operational planning.
+                                li Authored the architecture for a multi-stage rack-frame repair workflow spanning five stakeholder groups, eight major state transitions, five APIs, 36 transferred components, and 27 validated devices.
+                            p.font-italic.mb-2.mt-4 Object Storage
                             ul
-                                li Designed a rebalancing and resharding solution based on customer load to dynamically balance buckets and objects across shards.
-                                li Delivered critical customer features including Archive Tier Sunset and Embargo for all customer APIs, and improved list API latency by implementing an automated index-rebuild.
-                                li Spearheaded the strategic sunset of the OCI Archive Tier, orchestrating the migration of all legacy resources to Standard and Infrequent Access tiers, simplifying storage tiering, improving metering, and reducing long-term operational complexity.
-                                li Improved developer productivity by leading a repo split and JDK 17 upgrade for the object storage monolithic codebase.
-                                li Led a team of 5 engineers across the US and IDC, orchestrating the decoupling of monolithic repositories and services and directing the deployment of critical metadata infrastructure; spearheaded a high-priority task force to drive the enterprise-wide migration from Java 8 to Java 17, ensuring security compliance and performance optimization.
+                                li Designed and productionized automated database-index rebuilding for high-scale metadata shards, eliminating approximately 90 engineer-hours of manual work per month in one region, reclaiming storage, preventing customer-facing listing failures, and reclaiming over 1,000+ PB of data across all regions over 3 years.
+                                li Led a three-engineer, cross-region program to decompose the metadata monolith and migrate approximately 30 modules/components from Java 8 to Java 17, covering build systems, runtime images, cryptographic compliance, observability, testing, and staged rollout.
+                                li Improved Java 17 workload performance by 5.9% for mixed traffic and 15.2% for GET-heavy traffic, while improving p99.95 latency from 70ms to 35.7ms and reducing publisher-run latency by approximately 14&ndash;15%.
+                                li Designed load-aware shard rebalancing for a 99.95% availability target, replacing hour-plus manual bucket migrations with automated identification and movement of high-load buckets.
+                                li Led the architectural sunset of the Archive Tier across Console, CLI, REST APIs, lifecycle policies, metadata, metering, and analytics, simplifying Object Storage from a three-tier to a two-tier model.
+                                li Designed and hardened tenant-, namespace-, and API-level overload protection for a Tier-1 metadata request path, adding controlled throttling, rollout gates, validation dashboards, alarms, and rollback mechanisms.
                         .flex-shrink-0
                             span.text-primary February 2021 - Present
 
@@ -116,7 +126,90 @@ html(lang='en')
             section#skills.resume-section
                 .resume-section-content
                     h2.mb-5 Skills
-                    .subheading.mb-3 Languages
+                    .subheading.mb-3 Leadership
+                    ul.list-inline.dev-icons
+                        li.list-inline-item
+                            i.fas.fa-clipboard-check
+                            span.skill-label Ownership & Accountability
+                        li.list-inline-item
+                            i.fas.fa-lightbulb
+                            span.skill-label Technical Decision-Making
+                        li.list-inline-item
+                            i.fas.fa-handshake
+                            span.skill-label Influence Without Authority
+                        li.list-inline-item
+                            i.fas.fa-chalkboard-teacher
+                            span.skill-label Mentorship & Talent Development
+                        li.list-inline-item
+                            i.fas.fa-compass
+                            span.skill-label Execution Under Ambiguity
+                        li.list-inline-item
+                            i.fas.fa-sitemap
+                            span.skill-label Process Design
+                    .subheading.mb-3.mt-5 Distributed Systems / Cloud Infrastructure
+                    ul.list-inline.dev-icons
+                        li.list-inline-item
+                            i.fab.fa-aws
+                            span.skill-label AWS
+                        li.list-inline-item
+                            i.fab.fa-aws
+                            span.skill-label Amazon S3
+                        li.list-inline-item
+                            i.fas.fa-stream
+                            span.skill-label Kafka
+                        li.list-inline-item
+                            i.fas.fa-dharmachakra
+                            span.skill-label Kubernetes
+                        li.list-inline-item
+                            i.fab.fa-docker
+                            span.skill-label Docker
+                        li.list-inline-item
+                            i.fas.fa-search
+                            span.skill-label Elasticsearch
+                        li.list-inline-item
+                            i.fas.fa-chart-line
+                            span.skill-label Kibana
+                        li.list-inline-item
+                            i.fas.fa-list
+                            span.skill-label LogStash
+                        li.list-inline-item
+                            i.fas.fa-file-alt
+                            span.skill-label FileBeat
+                        li.list-inline-item
+                            i.fab.fa-linux
+                            span.skill-label Ubuntu Linux
+                        li.list-inline-item
+                            i.fas.fa-exchange-alt
+                            span.skill-label ETL Systems
+                    .subheading.mb-3.mt-5 Artificial Intelligence
+                    ul.list-inline.dev-icons
+                        li.list-inline-item
+                            i.fas.fa-brain
+                            span.skill-label TensorFlow
+                    .subheading.mb-3.mt-5 Tools & Technologies
+                    ul.list-inline.dev-icons
+                        li.list-inline-item
+                            i.fas.fa-cubes
+                            span.skill-label Maven
+                        li.list-inline-item
+                            i.fas.fa-leaf
+                            span.skill-label Spring
+                        li.list-inline-item
+                            i.fab.fa-git-alt
+                            span.skill-label Git
+                        li.list-inline-item
+                            i.fas.fa-laptop-code
+                            span.skill-label IntelliJ
+                        li.list-inline-item
+                            i.fas.fa-server
+                            span.skill-label Jersey
+                        li.list-inline-item
+                            i.fas.fa-database
+                            span.skill-label Hibernate
+                        li.list-inline-item
+                            i.fab.fa-jenkins
+                            span.skill-label Jenkins
+                    .subheading.mb-3.mt-5 Languages
                     ul.list-inline.dev-icons
                         li.list-inline-item
                             i.fas.fa-code
@@ -154,85 +247,6 @@ html(lang='en')
                         li.list-inline-item
                             i.fas.fa-terminal
                             span.skill-label Bash
-                    .subheading.mb-3.mt-5 Tools & Technologies
-                    ul.list-inline.dev-icons
-                        li.list-inline-item
-                            i.fas.fa-stream
-                            span.skill-label Kafka
-                        li.list-inline-item
-                            i.fab.fa-aws
-                            span.skill-label Amazon S3
-                        li.list-inline-item
-                            i.fab.fa-aws
-                            span.skill-label AWS
-                        li.list-inline-item
-                            i.fas.fa-exchange-alt
-                            span.skill-label ETL Systems
-                        li.list-inline-item
-                            i.fas.fa-cubes
-                            span.skill-label Maven
-                        li.list-inline-item
-                            i.fas.fa-search
-                            span.skill-label Elasticsearch
-                        li.list-inline-item
-                            i.fas.fa-leaf
-                            span.skill-label Spring
-                        li.list-inline-item
-                            i.fab.fa-docker
-                            span.skill-label Docker
-                        li.list-inline-item
-                            i.fab.fa-git-alt
-                            span.skill-label Git
-                        li.list-inline-item
-                            i.fas.fa-laptop-code
-                            span.skill-label IntelliJ
-                        li.list-inline-item
-                            i.fab.fa-linux
-                            span.skill-label Ubuntu Linux
-                        li.list-inline-item
-                            i.fas.fa-dharmachakra
-                            span.skill-label Kubernetes
-                        li.list-inline-item
-                            i.fas.fa-chart-line
-                            span.skill-label Kibana
-                        li.list-inline-item
-                            i.fas.fa-brain
-                            span.skill-label TensorFlow
-                        li.list-inline-item
-                            i.fas.fa-list
-                            span.skill-label LogStash
-                        li.list-inline-item
-                            i.fas.fa-file-alt
-                            span.skill-label FileBeat
-                        li.list-inline-item
-                            i.fas.fa-server
-                            span.skill-label Jersey
-                        li.list-inline-item
-                            i.fas.fa-database
-                            span.skill-label Hibernate
-                        li.list-inline-item
-                            i.fab.fa-jenkins
-                            span.skill-label Jenkins
-                    .subheading.mb-3.mt-5 Leadership
-                    ul.list-inline.dev-icons
-                        li.list-inline-item
-                            i.fas.fa-clipboard-check
-                            span.skill-label Ownership & Accountability
-                        li.list-inline-item
-                            i.fas.fa-lightbulb
-                            span.skill-label Technical Decision-Making
-                        li.list-inline-item
-                            i.fas.fa-handshake
-                            span.skill-label Influence Without Authority
-                        li.list-inline-item
-                            i.fas.fa-chalkboard-teacher
-                            span.skill-label Mentorship & Talent Development
-                        li.list-inline-item
-                            i.fas.fa-compass
-                            span.skill-label Execution Under Ambiguity
-                        li.list-inline-item
-                            i.fas.fa-sitemap
-                            span.skill-label Process Design
 
             hr.m-0
 
