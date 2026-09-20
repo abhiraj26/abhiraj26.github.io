@@ -25,6 +25,14 @@
                     1000,
                     "easeInOutExpo"
                 );
+                // Update the address bar with this section's hash (without
+                // the instant jump a plain location.hash assignment causes)
+                // so the URL can be copied and shared to that exact section.
+                if (history.pushState) {
+                    history.pushState(null, null, this.hash);
+                } else {
+                    location.hash = this.hash;
+                }
                 return false;
             }
         }
