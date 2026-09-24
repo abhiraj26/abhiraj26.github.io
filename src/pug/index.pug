@@ -71,8 +71,9 @@ html(lang='en')
                                 li Designed load-aware shard rebalancing for a 99.95% availability target, replacing hour-plus manual bucket migrations with automated identification and movement of high-load buckets.
                                 li Designed and hardened tenant-, namespace-, and API-level overload protection for a Tier-1 metadata request path, adding controlled throttling, rollout gates, validation dashboards, alarms, and rollback mechanisms.
 
-                            .case-study.mt-4.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
-                                p.font-italic.mb-2 Archive Tier Sunset
+                            .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
+                                span.mono-accent Project &mdash; Object Storage
+                                p.font-italic.mb-2.mt-1 Archive Tier Sunset
 
                                 p.mb-2
                                     strong.text-primary Situation:
@@ -90,7 +91,13 @@ html(lang='en')
                                     li Metering, billing, retention, restore, GET/LIST, and PUT/DELETE semantics
                                     li REST API, CLI, and Console behavior
                                     li Storage capacity metrics integration with Horizon for capacity forecasting and planning
-                                p.mb-2 Defined the MVP approach to transparently expose existing Archive buckets as Standard and Archive objects as Infrequent Access, block creation of new Archive resources, update OLM transitions, remove Archive from storage-tier enums and API responses, and preserve backward-compatible customer behavior during the transition.
+                                p.mb-2 The Archive Tier sunset was executed through two parallel workstreams:
+                                p.mb-2
+                                    strong Phase 1:
+                                    |  Transparently expose existing Archive buckets as Standard and Archive objects as Infrequent Access, block creation of new Archive resources, update OLM transitions, remove Archive from storage-tier enums and API responses, and preserve backward-compatible customer behavior during the transition.
+                                p.mb-2
+                                    strong Phase 2:
+                                    |  Migrate all Archive-tier objects to Infrequent Access, complete the required metadata migration/backfill, and fully remove Archive-tier object support from storage workflows and customer-facing surfaces.
 
                                 p.mb-2
                                     strong.text-primary Complexity:

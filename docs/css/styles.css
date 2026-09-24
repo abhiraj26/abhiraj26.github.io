@@ -10347,10 +10347,20 @@ section.resume-section h2::after {
 .case-study {
   border-radius: 0 0.5rem 0.5rem 0;
 }
+.case-study > .mono-accent {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.04rem;
+}
 .case-study ul {
   padding-left: 1.25rem;
 }
 
+@media (min-width: 768px) {
+  .case-study {
+    margin-left: 1.5rem !important;
+  }
+}
 @media (min-width: 768px) {
   section.resume-section {
     min-height: 100vh;

@@ -41,12 +41,25 @@ section.resume-section {
 }
 
 // Situation / Action / Complexity / Result case-study callout used to
-// spotlight a single project within an experience entry
+// spotlight a single project nested under a role's bullet group
 .case-study {
     border-radius: 0 0.5rem 0.5rem 0;
 
+    // Eyebrow label naming the parent bullet group this project belongs to
+    > .mono-accent {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 0.04rem;
+    }
+
     ul {
         padding-left: 1.25rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .case-study {
+        margin-left: 1.5rem !important;
     }
 }
 
