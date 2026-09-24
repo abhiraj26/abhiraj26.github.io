@@ -10344,6 +10344,13 @@ section.resume-section h2::after {
   background-color: #ffffff;
 }
 
+.case-study {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.case-study ul {
+  padding-left: 1.25rem;
+}
+
 @media (min-width: 768px) {
   section.resume-section {
     min-height: 100vh;

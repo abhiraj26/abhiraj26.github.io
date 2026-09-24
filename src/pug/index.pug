@@ -69,8 +69,41 @@ html(lang='en')
                                 li Led a three-engineer, cross-region program to decompose the metadata monolith and migrate approximately 30 modules/components from Java 8 to Java 17, covering build systems, runtime images, cryptographic compliance, observability, testing, and staged rollout.
                                 li Improved Java 17 workload performance by 5.9% for mixed traffic and 15.2% for GET-heavy traffic, while improving p99.95 latency from 70ms to 35.7ms and reducing publisher-run latency by approximately 14&ndash;15%.
                                 li Designed load-aware shard rebalancing for a 99.95% availability target, replacing hour-plus manual bucket migrations with automated identification and movement of high-load buckets.
-                                li Led the architectural sunset of the Archive Tier across Console, CLI, REST APIs, lifecycle policies, metadata, metering, and analytics, simplifying Object Storage from a three-tier to a two-tier model.
                                 li Designed and hardened tenant-, namespace-, and API-level overload protection for a Tier-1 metadata request path, adding controlled throttling, rollout gates, validation dashboards, alarms, and rollback mechanisms.
+
+                            .case-study.mt-4.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
+                                p.font-italic.mb-2 Archive Tier Sunset
+
+                                p.mb-2
+                                    strong.text-primary Situation:
+                                    |  OCI Object Storage was deprecating Archive Tier to simplify the storage model from three tiers to two &mdash; Standard and Infrequent Access &mdash; while maintaining customer experience, storage semantics, and billing correctness. The migration required moving Archive-tier buckets to Standard and Archive-tier objects to Infrequent Access, preventing new Archive usage, and subsequently removing Archive Tier from storage workflows and customer-facing interfaces.
+
+                                p.mb-2
+                                    strong.text-primary Action:
+                                    |  Led the design and implementation strategy for the Archive Tier sunset across the Object Storage stack, including:
+                                ul.mb-2
+                                    li Bucket creation and storage-tier behavior
+                                    li Object upload and storage-tier updates
+                                    li Object Lifecycle Management (OLM) policy evaluation and transitions
+                                    li Auto-Tiering behavior and customer cost optimization
+                                    li Metadata API behavior and storage-tier representation
+                                    li Metering, billing, retention, restore, GET/LIST, and PUT/DELETE semantics
+                                    li REST API, CLI, and Console behavior
+                                    li Storage capacity metrics integration with Horizon for capacity forecasting and planning
+                                p.mb-2 Defined the MVP approach to transparently expose existing Archive buckets as Standard and Archive objects as Infrequent Access, block creation of new Archive resources, update OLM transitions, remove Archive from storage-tier enums and API responses, and preserve backward-compatible customer behavior during the transition.
+
+                                p.mb-2
+                                    strong.text-primary Complexity:
+                                    |  Drove a cross-surface storage-tier deprecation spanning public APIs, CLI/Console UX, OLM policy semantics, metadata consistency, metering and retention behavior, MDS backfill, and capacity analytics. The design required careful compatibility decisions because Archive Tier existed at both the bucket and object level, with customer-visible implications across billing, restore behavior, retention, object operations, and lifecycle policies. The solution covered 3 customer interaction surfaces &mdash; Console, CLI, and REST APIs &mdash; and 3 object-tier entry points &mdash; upload, explicit tier modification, and OLM policy transitions &mdash; while separating the MVP customer-facing translation layer from the subsequent metadata backfill.
+
+                                p.mb-2
+                                    strong.text-primary Result:
+                                ul.mb-0
+                                    li Simplified OCI Object Storage from a three-tier to a two-tier storage model.
+                                    li Impacted 737 paid Archive-tier customers.
+                                    li Addressed an Archive footprint of approximately 419 PB.
+                                    li Reduced long-term engineering, operational, and support complexity associated with maintaining a dedicated Archive tier.
+                                    li Integrated storage capacity metrics with Horizon, improving capacity forecasting and planning.
                         .flex-shrink-0
                             span.text-primary February 2021 - Present
 
