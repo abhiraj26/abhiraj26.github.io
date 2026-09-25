@@ -152,6 +152,41 @@ html(lang='en')
                             ul
                                 li Designed an end-to-end architecture to enhance customer security by removing outdated data stored in S3 buckets.
                                 li Provided an API and CLI option for clients to set the number of days they want data to be stored.
+
+                            .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
+                                p.font-italic.mb-2 Seatbelt Execution Output Sweeper
+
+                                .case-study-block
+                                    strong.text-primary.case-study-label Situation
+                                    p.mb-0 Seatbelt is a managed service for executing scripts at scale across hosts, providing safety guardrails, velocity control, monitoring, and other execution controls. When customers execute scripts through Seatbelt, script output and error logs are stored in S3; these logs can contain sensitive or critical data from individual hosts and therefore need to be automatically deleted after an appropriate retention period. The goal of this project was to design and implement an automated mechanism to expire and delete Seatbelt execution logs from S3, reducing data-security and compliance risk while giving customers control over log retention.
+
+                                .case-study-block
+                                    strong.text-primary.case-study-label Action
+                                    p.mb-2 Drove the project across four workstreams:
+                                    ul.mb-0
+                                        li
+                                            strong Defined log-retention requirements:
+                                            |  Engaged with recent and frequent customers and EC2 Security Engineers to determine appropriate minimum, maximum, and default values for the Log Expiration Days configuration.
+                                        li
+                                            strong Customer-facing configuration:
+                                            |  Implemented API and CLI changes to allow customers to configure and update Log Expiration Days.
+                                        li
+                                            strong Automated log cleanup:
+                                            |  Implemented multithreaded DJS jobs to identify and delete expired execution logs from S3 and maintain the corresponding Log Deletion Time.
+                                        li
+                                            strong Production execution:
+                                            |  Built the synthesis DJS job using LPT to orchestrate the cleanup workflow at scale.
+
+                                .case-study-block
+                                    strong.text-primary.case-study-label Complexity
+                                    p.mb-2 A key design challenge was performing large-scale log cleanup without increasing database load or affecting processes already running on the same fleet.
+                                    p.mb-2 During design review, I identified that introducing a new indexed Log Expiration Status field could increase database load and negatively impact existing workloads. Instead, I reused an existing indexed status attribute to represent the required state, avoiding the need for an additional database index and reducing the potential impact on fleet performance.
+                                    p.mb-0 I also initially proposed using a separate DJS job as a backup worker for records whose S3 deletion failed. Based on design feedback, I redesigned the workflow to reuse the same DJS job &mdash; first processing newly expired logs, then retrying records that had remained undeleted for more than a day. This eliminated a separate worker, reducing resource and memory consumption while keeping the cleanup and retry logic within a single workflow.
+
+                                .case-study-block.mb-0
+                                    strong.text-primary.case-study-label Result
+                                    p.mb-2 The solution applies to all Seatbelt users and automatically manages expiration for approximately 1,000 script executions per day, covering ~40 GB of execution output daily and 1,200+ GB per month across 30K+ execution logs.
+                                    p.mb-0 By automatically expiring and deleting execution output from S3, the solution reduces the exposure window for potentially sensitive host data, lowers S3 storage cost, mitigates data-security and compliance risk, and eliminates the need for manual log cleanup.
                         .flex-shrink-0
                             span.text-primary June 2020 - August 2020
 
