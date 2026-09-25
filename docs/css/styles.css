@@ -10347,13 +10347,29 @@ section.resume-section h2::after {
 .case-study {
   border-radius: 0 0.5rem 0.5rem 0;
 }
-.case-study > .mono-accent {
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 0.04rem;
-}
 .case-study ul {
   padding-left: 1.25rem;
+}
+
+.case-study-block {
+  margin-bottom: 1.15rem;
+}
+.case-study-block:last-child {
+  margin-bottom: 0;
+}
+
+.case-study-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.case-study-block > p,
+.case-study-block > ul {
+  padding-left: 1rem;
 }
 
 @media (min-width: 768px) {

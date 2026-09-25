@@ -45,16 +45,34 @@ section.resume-section {
 .case-study {
     border-radius: 0 0.5rem 0.5rem 0;
 
-    // Eyebrow label naming the parent bullet group this project belongs to
-    > .mono-accent {
-        display: block;
-        text-transform: uppercase;
-        letter-spacing: 0.04rem;
-    }
-
     ul {
         padding-left: 1.25rem;
     }
+}
+
+// One Situation / Action / Complexity / Result entry within a case study:
+// the label sits on its own line, with its paragraph(s) indented below it
+// for a clear, readable break between the two.
+.case-study-block {
+    margin-bottom: 1.15rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.case-study-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    margin-bottom: 0.4rem;
+}
+
+.case-study-block > p,
+.case-study-block > ul {
+    padding-left: 1rem;
 }
 
 @include media-breakpoint-up(md) {

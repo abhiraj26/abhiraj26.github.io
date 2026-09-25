@@ -107,84 +107,88 @@
                                 <li>Designed and hardened tenant-, namespace-, and API-level overload protection for a Tier-1 metadata request path, adding controlled throttling, rollout gates, validation dashboards, alarms, and rollback mechanisms.</li>
                             </ul>
                             <div class="case-study mt-4 ml-3 p-3 bg-light border-left border-primary" style="border-left-width: 4px !important;">
-                                <span class="mono-accent">Project &mdash; Object Storage</span>
-                                <p class="font-italic mb-2 mt-1">Archive Tier Sunset</p>
-                                <p class="mb-2">
-                                    <strong class="text-primary">Situation:</strong>
-                                    OCI Object Storage was deprecating Archive Tier to simplify the storage model from three tiers to two &mdash; Standard and Infrequent Access &mdash; while maintaining customer experience, storage semantics, and billing correctness. The migration required moving Archive-tier buckets to Standard and Archive-tier objects to Infrequent Access, preventing new Archive usage, and subsequently removing Archive Tier from storage workflows and customer-facing interfaces.
-                                </p>
-                                <p class="mb-2">
-                                    <strong class="text-primary">Action:</strong>
-                                    Led the design and implementation strategy for the Archive Tier sunset across the Object Storage stack, including:
-                                </p>
-                                <ul class="mb-2">
-                                    <li>Bucket creation and storage-tier behavior</li>
-                                    <li>Object upload and storage-tier updates</li>
-                                    <li>Object Lifecycle Management (OLM) policy evaluation and transitions</li>
-                                    <li>Auto-Tiering behavior and customer cost optimization</li>
-                                    <li>Metadata API behavior and storage-tier representation</li>
-                                    <li>Metering, billing, retention, restore, GET/LIST, and PUT/DELETE semantics</li>
-                                    <li>REST API, CLI, and Console behavior</li>
-                                    <li>Storage capacity metrics integration with Horizon for capacity forecasting and planning</li>
-                                </ul>
-                                <p class="mb-2">The Archive Tier sunset was executed through two parallel workstreams:</p>
-                                <p class="mb-2">
-                                    <strong>Phase 1:</strong>
-                                    Transparently expose existing Archive buckets as Standard and Archive objects as Infrequent Access, block creation of new Archive resources, update OLM transitions, remove Archive from storage-tier enums and API responses, and preserve backward-compatible customer behavior during the transition.
-                                </p>
-                                <p class="mb-2">
-                                    <strong>Phase 2:</strong>
-                                    Migrate all Archive-tier objects to Infrequent Access, complete the required metadata migration/backfill, and fully remove Archive-tier object support from storage workflows and customer-facing surfaces.
-                                </p>
-                                <p class="mb-2">
-                                    <strong class="text-primary">Complexity:</strong>
-                                    Drove a cross-surface storage-tier deprecation spanning public APIs, CLI/Console UX, OLM policy semantics, metadata consistency, metering and retention behavior, MDS backfill, and capacity analytics. The design required careful compatibility decisions because Archive Tier existed at both the bucket and object level, with customer-visible implications across billing, restore behavior, retention, object operations, and lifecycle policies. The solution covered 3 customer interaction surfaces &mdash; Console, CLI, and REST APIs &mdash; and 3 object-tier entry points &mdash; upload, explicit tier modification, and OLM policy transitions &mdash; while separating the MVP customer-facing translation layer from the subsequent metadata backfill.
-                                </p>
-                                <p class="mb-2"><strong class="text-primary">Result:</strong></p>
-                                <ul class="mb-0">
-                                    <li>Simplified OCI Object Storage from a three-tier to a two-tier storage model.</li>
-                                    <li>Impacted 737 paid Archive-tier customers.</li>
-                                    <li>Addressed an Archive footprint of approximately 419 PB.</li>
-                                    <li>Reduced long-term engineering, operational, and support complexity associated with maintaining a dedicated Archive tier.</li>
-                                    <li>Integrated storage capacity metrics with Horizon, improving capacity forecasting and planning.</li>
-                                </ul>
+                                <p class="font-italic mb-2">Archive Tier Sunset</p>
+                                <div class="case-study-block">
+                                    <strong class="text-primary case-study-label">Situation</strong>
+                                    <p class="mb-0">OCI Object Storage was deprecating Archive Tier to simplify the storage model from three tiers to two &mdash; Standard and Infrequent Access &mdash; while maintaining customer experience, storage semantics, and billing correctness. The migration required moving Archive-tier buckets to Standard and Archive-tier objects to Infrequent Access, preventing new Archive usage, and subsequently removing Archive Tier from storage workflows and customer-facing interfaces.</p>
+                                </div>
+                                <div class="case-study-block">
+                                    <strong class="text-primary case-study-label">Action</strong>
+                                    <p class="mb-2">Led the design and implementation strategy for the Archive Tier sunset across the Object Storage stack, including:</p>
+                                    <ul class="mb-2">
+                                        <li>Bucket creation and storage-tier behavior</li>
+                                        <li>Object upload and storage-tier updates</li>
+                                        <li>Object Lifecycle Management (OLM) policy evaluation and transitions</li>
+                                        <li>Auto-Tiering behavior and customer cost optimization</li>
+                                        <li>Metadata API behavior and storage-tier representation</li>
+                                        <li>Metering, billing, retention, restore, GET/LIST, and PUT/DELETE semantics</li>
+                                        <li>REST API, CLI, and Console behavior</li>
+                                        <li>Storage capacity metrics integration with Horizon for capacity forecasting and planning</li>
+                                    </ul>
+                                    <p class="mb-2">The Archive Tier sunset was executed through two parallel workstreams:</p>
+                                    <p class="mb-2">
+                                        <strong>Phase 1:</strong>
+                                        Transparently expose existing Archive buckets as Standard and Archive objects as Infrequent Access, block creation of new Archive resources, update OLM transitions, remove Archive from storage-tier enums and API responses, and preserve backward-compatible customer behavior during the transition.
+                                    </p>
+                                    <p class="mb-0">
+                                        <strong>Phase 2:</strong>
+                                        Migrate all Archive-tier objects to Infrequent Access, complete the required metadata migration/backfill, and fully remove Archive-tier object support from storage workflows and customer-facing surfaces.
+                                    </p>
+                                </div>
+                                <div class="case-study-block">
+                                    <strong class="text-primary case-study-label">Complexity</strong>
+                                    <p class="mb-0">Drove a cross-surface storage-tier deprecation spanning public APIs, CLI/Console UX, OLM policy semantics, metadata consistency, metering and retention behavior, MDS backfill, and capacity analytics. The design required careful compatibility decisions because Archive Tier existed at both the bucket and object level, with customer-visible implications across billing, restore behavior, retention, object operations, and lifecycle policies. The solution covered 3 customer interaction surfaces &mdash; Console, CLI, and REST APIs &mdash; and 3 object-tier entry points &mdash; upload, explicit tier modification, and OLM policy transitions &mdash; while separating the MVP customer-facing translation layer from the subsequent metadata backfill.</p>
+                                </div>
+                                <div class="case-study-block mb-0">
+                                    <strong class="text-primary case-study-label">Result</strong>
+                                    <ul class="mb-0">
+                                        <li>Simplified OCI Object Storage from a three-tier to a two-tier storage model.</li>
+                                        <li>Impacted 737 paid Archive-tier customers.</li>
+                                        <li>Addressed an Archive footprint of approximately 419 PB.</li>
+                                        <li>Reduced long-term engineering, operational, and support complexity associated with maintaining a dedicated Archive tier.</li>
+                                        <li>Integrated storage capacity metrics with Horizon, improving capacity forecasting and planning.</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="case-study mt-4 ml-3 p-3 bg-light border-left border-primary" style="border-left-width: 4px !important;">
-                                <span class="mono-accent">Project &mdash; Object Storage</span>
-                                <p class="font-italic mb-2 mt-1">Monolith Decomposition / JDK Upgrade</p>
-                                <p class="mb-2">
-                                    <strong class="text-primary">Situation:</strong>
-                                    Metadata Services (MDS) was part of the Object Storage monolith (Frontend / MDS / Storage / OLM / Auto-Tiering / Garbage Collector), with multiple components intertwined and running on Java 8, creating long build cycles, shared dependency ownership, and risk to OCI-wide JDK 17 compliance. Led the MDS repo split and Java 17 migration strategy across critical Object Storage metadata services while maintaining service reliability and rollout safety.
-                                </p>
-                                <p class="mb-2">
-                                    <strong class="text-primary">Action:</strong>
-                                    Led a team of five engineers and coordinated with US and IDC subject-matter experts to execute the Java 17 migration across MDS services, including:
-                                </p>
-                                <ul class="mb-2">
-                                    <li>Drove monolith decomposition by splitting MDS from shared Object Storage code into MDS- and component-owned repositories, stabilizing builds, removing common coupling, and enabling independent service ownership.</li>
-                                    <li>Sequenced the repo split before the Java 17 migration to reduce dependency blast radius and avoid forcing unrelated Object Storage components through MDS-specific upgrades.</li>
-                                    <li>Defined the Java 8 / Java 17 compatibility strategy using separate build artifacts and runtime selection, enabling a controlled rollout instead of a flag-day runtime migration.</li>
-                                    <li>Implemented Java 17 prerequisites, including Prism metrics and Jipher adoption, to satisfy OCI cryptography/FIPS compliance requirements and expose JCE provider usage.</li>
-                                    <li>Upgraded build, test, and runtime dependencies, including the Maven Compiler Plugin, Mockito, Guice, SpotBugs, Lombok, and service-specific libraries.</li>
-                                    <li>Updated OCI Build configuration, Docker runtime images, startup scripts, server-check validation, Surefire/Failsafe JVM args, and module-level build steps for Java 17.</li>
-                                    <li>Authored upgrade guidance and a Casper-wide dependency inventory so other Object Storage teams could follow a consistent migration path.</li>
-                                </ul>
-                                <p class="mb-2">
-                                    <strong class="text-primary">Complexity:</strong>
-                                    Drove a cross-cutting migration across source layout, Maven reactor dependencies, OCI Build steps, runtime images, JVM flags, deployment validation, and service-level performance qualification. Required handling Java 17 module-boundary issues such as
-                                    <code>--add-opens</code>
-                                    /
-                                    <code>--add-exports</code>
-                                    , reflection access, internal JDK APIs, dependency convergence, and runtime-only failures after a successful compile. Required migrating the security provider from BC-FIPS to Jipher, with Prism observability, before moving critical services to Java 17. Touched core MDS services and surrounding components, including Object MDS, Tenant MDS, Operator MDS, Work Request MDS, Schema Service, MDS Canary, Storage Metering, RQS, Garbage Collector, Metadata Rebalancer, CMSP, and Snapshot Publisher &mdash; requiring ownership across architecture sequencing, cross-org coordination, operational excellence, and data-driven rollout qualification.
-                                </p>
-                                <p class="mb-2"><strong class="text-primary">Result:</strong></p>
-                                <ul class="mb-0">
-                                    <li>Completed repo split phases for independent MDS ownership, casper-common dependency removal, and build/test optimization.</li>
-                                    <li>Built a Casper dependency inventory covering approximately 50 Object Storage components across MDS, FE, Storage, SDP, Async, and Webserver paths, and a Java 17 plan tracking roughly 30 MDS modules/components through upgrade and rollout readiness.</li>
-                                    <li>Object MDS Java 17 performance qualification showed no regression across mixed GET/PUT/LIST/DELETE traffic; mixed-workload throughput improved from 5,567 to 5,897 ops/sec, while GC pause time dropped from 2.63% to 0.00063%.</li>
-                                    <li>90% GET / 10% PUT Object MDS testing improved from 9,022 to 10,396 ops/sec, with p99.95 latency improving from 70ms to 35.7ms.</li>
-                                    <li>Metadata Publisher Java 17 qualification improved CMSP run latency by roughly 14&ndash;15% across ~150M and ~280M object test sets.</li>
-                                </ul>
+                                <p class="font-italic mb-2">Monolith Decomposition / JDK Upgrade</p>
+                                <div class="case-study-block">
+                                    <strong class="text-primary case-study-label">Situation</strong>
+                                    <p class="mb-0">Metadata Services (MDS) was part of the Object Storage monolith (Frontend / MDS / Storage / OLM / Auto-Tiering / Garbage Collector), with multiple components intertwined and running on Java 8, creating long build cycles, shared dependency ownership, and risk to OCI-wide JDK 17 compliance. Led the MDS repo split and Java 17 migration strategy across critical Object Storage metadata services while maintaining service reliability and rollout safety.</p>
+                                </div>
+                                <div class="case-study-block">
+                                    <strong class="text-primary case-study-label">Action</strong>
+                                    <p class="mb-2">Led a team of five engineers and coordinated with US and IDC subject-matter experts to execute the Java 17 migration across MDS services, including:</p>
+                                    <ul class="mb-0">
+                                        <li>Drove monolith decomposition by splitting MDS from shared Object Storage code into MDS- and component-owned repositories, stabilizing builds, removing common coupling, and enabling independent service ownership.</li>
+                                        <li>Sequenced the repo split before the Java 17 migration to reduce dependency blast radius and avoid forcing unrelated Object Storage components through MDS-specific upgrades.</li>
+                                        <li>Defined the Java 8 / Java 17 compatibility strategy using separate build artifacts and runtime selection, enabling a controlled rollout instead of a flag-day runtime migration.</li>
+                                        <li>Implemented Java 17 prerequisites, including Prism metrics and Jipher adoption, to satisfy OCI cryptography/FIPS compliance requirements and expose JCE provider usage.</li>
+                                        <li>Upgraded build, test, and runtime dependencies, including the Maven Compiler Plugin, Mockito, Guice, SpotBugs, Lombok, and service-specific libraries.</li>
+                                        <li>Updated OCI Build configuration, Docker runtime images, startup scripts, server-check validation, Surefire/Failsafe JVM args, and module-level build steps for Java 17.</li>
+                                        <li>Authored upgrade guidance and a Casper-wide dependency inventory so other Object Storage teams could follow a consistent migration path.</li>
+                                    </ul>
+                                </div>
+                                <div class="case-study-block">
+                                    <strong class="text-primary case-study-label">Complexity</strong>
+                                    <p class="mb-0">
+                                        Drove a cross-cutting migration across source layout, Maven reactor dependencies, OCI Build steps, runtime images, JVM flags, deployment validation, and service-level performance qualification. Required handling Java 17 module-boundary issues such as
+                                        <code>--add-opens</code>
+                                        /
+                                        <code>--add-exports</code>
+                                        , reflection access, internal JDK APIs, dependency convergence, and runtime-only failures after a successful compile. Required migrating the security provider from BC-FIPS to Jipher, with Prism observability, before moving critical services to Java 17. Touched core MDS services and surrounding components, including Object MDS, Tenant MDS, Operator MDS, Work Request MDS, Schema Service, MDS Canary, Storage Metering, RQS, Garbage Collector, Metadata Rebalancer, CMSP, and Snapshot Publisher &mdash; requiring ownership across architecture sequencing, cross-org coordination, operational excellence, and data-driven rollout qualification.
+                                    </p>
+                                </div>
+                                <div class="case-study-block mb-0">
+                                    <strong class="text-primary case-study-label">Result</strong>
+                                    <ul class="mb-0">
+                                        <li>Completed repo split phases for independent MDS ownership, casper-common dependency removal, and build/test optimization.</li>
+                                        <li>Built a Casper dependency inventory covering approximately 50 Object Storage components across MDS, FE, Storage, SDP, Async, and Webserver paths, and a Java 17 plan tracking roughly 30 MDS modules/components through upgrade and rollout readiness.</li>
+                                        <li>Object MDS Java 17 performance qualification showed no regression across mixed GET/PUT/LIST/DELETE traffic; mixed-workload throughput improved from 5,567 to 5,897 ops/sec, while GC pause time dropped from 2.63% to 0.00063%.</li>
+                                        <li>90% GET / 10% PUT Object MDS testing improved from 9,022 to 10,396 ops/sec, with p99.95 latency improving from 70ms to 35.7ms.</li>
+                                        <li>Metadata Publisher Java 17 qualification improved CMSP run latency by roughly 14&ndash;15% across ~150M and ~280M object test sets.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">February 2021 - Present</span></div>
