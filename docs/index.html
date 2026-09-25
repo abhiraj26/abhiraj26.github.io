@@ -248,14 +248,19 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Technical Analyst</h3>
                             <div class="subheading mb-3">Goldman Sachs, Bengaluru &mdash; Document Lake, Pricing Technology</div>
-                            <p>Document Lake is a centralized internal platform for storing documents in Elastic Cloud Storage (ECS), providing search and OCR capabilities.</p>
+                            <p class="font-italic mb-2">Document Lake</p>
+                            <p class="mb-2">Document Lake is a centralized internal platform for storing documents in Elastic Cloud Storage (ECS), providing search and OCR (optical character recognition) capabilities.</p>
                             <ul>
-                                <li>Conceived and implemented the plan to migrate an older system to Document Lake; the migrated system processes up to 10 million files and 1TB of data per day, improving throughput by over 80% versus the older system.</li>
-                                <li>Brainstormed and devised a scalable multithreaded solution using Kafka to migrate files to the cloud using Amazon S3.</li>
-                                <li>Improvised the migration plan by introducing MongoDB as a staging table to store Kafka offsets and added the ability to replay retained messages from a topic, exposed as a secure REST endpoint via SwaggerUI.</li>
-                                <li>Developed a Proof of Concept comparing Elasticsearch query retrieval time and complex query support against ECS's built-in bucket search; designed data models, RESTful microservices and configured Elasticsearch clusters.</li>
-                                <li>Onboarded feeds to EMS (Enterprise Messaging System) Queues, Streams and hybrid pipeline/stream systems that transport vendor data to the primary database.</li>
-                                <li>Designed Prime View, a UI for operations to view and perform real-time updates to trading data.</li>
+                                <li>Conceived and implemented the plan to migrate an older system to Document Lake; the migrated system processes up to 10 million files and 1TB of data per day, improving throughput by 80% over the older system.</li>
+                                <li>Devised a scalable multithreaded solution using Kafka to migrate files to ECS via Amazon S3 at high throughput.</li>
+                                <li>Improved the migration plan by introducing MongoDB as a staging and checkpoint store for Kafka offsets, enabling recovery and replay of retained Kafka messages from a topic without restarting the migration.</li>
+                                <li>Developed a proof of concept to benchmark Elasticsearch query-retrieval performance and complex-query support against ECS's built-in bucket search.</li>
+                            </ul>
+                            <p class="font-italic mb-2 mt-4">Product &amp; Pricing Technology</p>
+                            <p class="mb-2">Product &amp; Pricing Technology provides real-time vendor-data availability and backfills existing data across stock exchanges for listed securities.</p>
+                            <ul>
+                                <li>Onboarded ETL pipelines to Enterprise Messaging System (EMS) queues, streams, and hybrid queue/stream architectures to reliably transport vendor data into the primary database.</li>
+                                <li>Designed and developed Prime View, a UI for operations to view and perform real-time updates to trading data.</li>
                             </ul>
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">June 2017 - April 2019</span></div>
