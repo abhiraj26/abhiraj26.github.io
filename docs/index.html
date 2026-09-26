@@ -37,8 +37,8 @@
                             <a class="dropdown-item js-scroll-trigger" href="awards.html">Awards &amp; Achievements</a>
                             <a class="dropdown-item js-scroll-trigger" href="extracurricular.html">Extra Curricular Activities</a>
                             <a class="dropdown-item js-scroll-trigger" href="responsibility.html">Responsibility</a>
-                            <a class="dropdown-item js-scroll-trigger" href="additional-academic-projects.html">Additional Academic Projects</a>
                             <a class="dropdown-item js-scroll-trigger" href="additional-work-experience.html">Additional Work Experience</a>
+                            <a class="dropdown-item js-scroll-trigger" href="additional-academic-projects.html">Additional Academic Projects</a>
                         </div>
                     </li>
                 </ul>
@@ -489,9 +489,13 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Depression Tendency in Twitter Users</h3>
                             <div class="subheading mb-2">Natural Language Processing, Prof. Niranjan</div>
+                            <p class="mb-2">Built an NLP system to classify tweets as suggestive or not suggestive of depression, and extended it to estimate the depression tendency of individual Twitter users.</p>
                             <ul class="mb-0">
-                                <li>Retrieved tweets using Selenium and scripts, and removed bias from the dataset by manual annotation of tweets.</li>
-                                <li>Applied BiLSTM with Attention and the state-of-the-art RoBERTa model, achieving 92.5% accuracy.</li>
+                                <li>Scraped ~20K tweets from public accounts using Selenium and Python scripts, added neutral/positive tweets, and reduced dataset bias through manual annotation.</li>
+                                <li>Preprocessed text by filtering short tweets and removing emojis, hashtags and media posts.</li>
+                                <li>Built a Logistic Regression baseline (scikit-learn) on TF-IDF and averaged Word2Vec (Gensim) sentence representations, with hyperparameter and solver tuning.</li>
+                                <li>Compared recurrent deep learning models against transformers; BiLSTM with Attention and the state-of-the-art RoBERTa model achieved 92.5% accuracy.</li>
+                                <li>Evaluated models on accuracy, precision, recall and F1, along with training/validation loss analysis.</li>
                             </ul>
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">Sep 2020 - Dec 2020</span></div>
@@ -500,9 +504,12 @@
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Do Popular Movies Endure Over Time?</h3>
                             <div class="subheading mb-2">Prof. Steven Skiena</div>
+                            <p class="mb-2">Built a machine learning model to predict the present-day popularity of movies from attributes known at the time of release, to understand why some films endure over time.</p>
                             <ul class="mb-0">
-                                <li>Developed a statistical model to predict the current popularity of old movies using IMDB and Kaggle datasets.</li>
-                                <li>Applied different machine learning models to calculate the endurance of movies using a designed metric.</li>
+                                <li>Integrated data from IMDb, a ~5,000-movie Kaggle dataset, Google Trends, and The Movie Database API.</li>
+                                <li>Performed data cleaning, normalization, de-duplication and anomaly detection, and resolved entity-matching issues across sources (sequels, remakes, title variations, actors' stage names).</li>
+                                <li>Engineered features and built a regression baseline, then explored Random Forest, Gradient Boosting and Neural Network models with K-fold cross-validation for hyperparameter tuning.</li>
+                                <li>Analyzed factors behind long-term popularity and visualized trends across decades.</li>
                             </ul>
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">Oct 2019 - Nov 2019</span></div>
