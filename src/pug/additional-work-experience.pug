@@ -1,0 +1,48 @@
+- var page = 'additional-work-experience'
+- var pageTitle = 'Additional Work Experience - Abhiraj Smit'
+
+doctype html
+html(lang='en')
+
+    include includes/head.pug
+
+    body#page-top
+
+        include includes/nav.pug
+
+        // Page Content
+        .container-fluid.p-0
+
+            section#additional-work-experience.resume-section
+                .resume-section-content
+                    h2.mb-5 Additional Work Experience
+
+                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
+                        .flex-grow-1
+                            h3.mb-0 Graduate Teaching Assistant &mdash; Analysis of Algorithms
+                            .subheading.mb-3 Stony Brook University, New York City Metropolitan Area &mdash; On-site
+                            p.mb-0 Graduate Teaching Assistant for the course #[a(href='https://www.cs.stonybrook.edu/students/Graduate-Studies/courses/CSE548', target='_blank', rel='noopener') Analysis of Algorithms (CSE 548)] under the guidance of Prof. Rezaul A. Chowdhury. Responsible for helping students understand course concepts and solve algorithmic problems, while grading assignments and exams.
+                        .flex-shrink-0
+                            span.text-primary Aug 2020 - Dec 2020
+
+                    .d-flex.flex-column.flex-md-row.justify-content-between
+                        .flex-grow-1
+                            h3.mb-0 Summer Intern
+                            .subheading.mb-3 Goldman Sachs, Bengaluru &mdash; DataFactory
+                            p DataFactory is a cloud-hosted, multi-tenant internal platform for managing data from multiple vendors.
+                            ul
+                                li Designed runtime data-segmentation approaches, including region-based whitelisting, to enable granular vendor-data isolation for analytics.
+                                li Automated Operations input collection by replacing manual email- and phone-based workflows with a centralized task-generation and tracking system, saving approximately 120 man-hours per week.
+                                li Developed the Tasks UI in Angular 2 to enable Operations teams to manage and submit required inputs through the platform.
+                        .flex-shrink-0
+                            span.text-primary May 2016 - June 2016
+
+        // Bootstrap core JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js')
+
+        // Third party plugin JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js')
+
+        // Core theme JS
+        script(src='js/scripts.js')
