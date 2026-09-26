@@ -441,11 +441,15 @@ html(lang='en')
 
                     .d-flex.flex-column.flex-md-row.justify-content-between
                         .flex-grow-1
-                            h3.mb-0 Offline Signature Forgery Detection
+                            h3.mb-0 Offline Handwritten Signature Verification
                             .subheading.mb-2 Prof. Akriti Nigam
+                            p.mb-2 Built a biometric verification system to distinguish genuine handwritten signatures from forgeries for fraud prevention and authentication.
                             ul.mb-0
-                                li Created a model based on individuals' real and forged signatures, using the CEDAR database to train the model.
-                                li Applied machine learning techniques like SVM and ANN and compared their sensitivity and specificity.
+                                li Pre-processed scanned signature images through binarization, morphological dilation/erosion, skeletonization (thinning) and pruning, then cropped each to its bounding box to isolate the strokes.
+                                li Extracted directional and geometric features &mdash; aspect ratio, baseline slant, centroid, and counts of termination/trifurcate/intersection points &mdash; using a grid-based approach.
+                                li Trained and compared SVM and ANN classifiers on the CEDAR signature database (55 writers, 24 genuine and 24 forged signatures each) across two train/test splits.
+                                li Evaluated both models on sensitivity, specificity and accuracy from confusion-matrix analysis; SVM outperformed ANN, reaching up to ~91.7% accuracy.
+                            p.mb-0.mt-2 #[a(href='https://github.com/abhiraj26/offline-signature-verification', target='_blank', rel='noopener') View Repository]
                         .flex-shrink-0
                             span.text-primary Jan 2017 - May 2017
 
