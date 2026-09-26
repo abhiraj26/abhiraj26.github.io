@@ -10372,6 +10372,24 @@ section.resume-section h2::after {
   padding-left: 1rem;
 }
 
+.case-study-toggle {
+  cursor: pointer;
+  color: #1f2933;
+  text-decoration: none;
+}
+.case-study-toggle:hover, .case-study-toggle:focus {
+  color: #0f766e;
+  text-decoration: none;
+}
+.case-study-toggle .case-study-toggle-icon {
+  font-size: 0.8rem;
+  color: #0f766e;
+  transition: transform 0.2s ease-in-out;
+}
+.case-study-toggle:not(.collapsed) .case-study-toggle-icon {
+  transform: rotate(180deg);
+}
+
 @media (min-width: 768px) {
   .case-study {
     margin-left: 1.5rem !important;

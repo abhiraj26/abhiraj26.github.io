@@ -72,76 +72,80 @@ html(lang='en')
                                 li Designed and hardened tenant-, namespace-, and API-level overload protection for a Tier-1 metadata request path, adding controlled throttling, rollout gates, validation dashboards, alarms, and rollback mechanisms.
 
                             .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
-                                p.font-italic.mb-2 Archive Tier Sunset
+                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-archive-tier-sunset', role='button', aria-expanded='false', aria-controls='cs-archive-tier-sunset')
+                                    span.font-italic Archive Tier Sunset
+                                    i.fas.fa-chevron-down.case-study-toggle-icon
+                                #cs-archive-tier-sunset.collapse
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Situation
+                                        p.mb-0 OCI Object Storage was deprecating Archive Tier to simplify the storage model from three tiers to two &mdash; Standard and Infrequent Access &mdash; while maintaining customer experience, storage semantics, and billing correctness. The migration required moving Archive-tier buckets to Standard and Archive-tier objects to Infrequent Access, preventing new Archive usage, and subsequently removing Archive Tier from storage workflows and customer-facing interfaces.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Situation
-                                    p.mb-0 OCI Object Storage was deprecating Archive Tier to simplify the storage model from three tiers to two &mdash; Standard and Infrequent Access &mdash; while maintaining customer experience, storage semantics, and billing correctness. The migration required moving Archive-tier buckets to Standard and Archive-tier objects to Infrequent Access, preventing new Archive usage, and subsequently removing Archive Tier from storage workflows and customer-facing interfaces.
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Action
+                                        p.mb-2 Led the design and implementation strategy for the Archive Tier sunset across the Object Storage stack, including:
+                                        ul.mb-2
+                                            li Bucket creation and storage-tier behavior
+                                            li Object upload and storage-tier updates
+                                            li Object Lifecycle Management (OLM) policy evaluation and transitions
+                                            li Auto-Tiering behavior and customer cost optimization
+                                            li Metadata API behavior and storage-tier representation
+                                            li Metering, billing, retention, restore, GET/LIST, and PUT/DELETE semantics
+                                            li REST API, CLI, and Console behavior
+                                            li Storage capacity metrics integration with Horizon for capacity forecasting and planning
+                                        p.mb-2 The Archive Tier sunset was executed through two parallel workstreams:
+                                        p.mb-2
+                                            strong Phase 1:
+                                            |  Transparently expose existing Archive buckets as Standard and Archive objects as Infrequent Access, block creation of new Archive resources, update OLM transitions, remove Archive from storage-tier enums and API responses, and preserve backward-compatible customer behavior during the transition.
+                                        p.mb-0
+                                            strong Phase 2:
+                                            |  Migrate all Archive-tier objects to Infrequent Access, complete the required metadata migration/backfill, and fully remove Archive-tier object support from storage workflows and customer-facing surfaces.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Action
-                                    p.mb-2 Led the design and implementation strategy for the Archive Tier sunset across the Object Storage stack, including:
-                                    ul.mb-2
-                                        li Bucket creation and storage-tier behavior
-                                        li Object upload and storage-tier updates
-                                        li Object Lifecycle Management (OLM) policy evaluation and transitions
-                                        li Auto-Tiering behavior and customer cost optimization
-                                        li Metadata API behavior and storage-tier representation
-                                        li Metering, billing, retention, restore, GET/LIST, and PUT/DELETE semantics
-                                        li REST API, CLI, and Console behavior
-                                        li Storage capacity metrics integration with Horizon for capacity forecasting and planning
-                                    p.mb-2 The Archive Tier sunset was executed through two parallel workstreams:
-                                    p.mb-2
-                                        strong Phase 1:
-                                        |  Transparently expose existing Archive buckets as Standard and Archive objects as Infrequent Access, block creation of new Archive resources, update OLM transitions, remove Archive from storage-tier enums and API responses, and preserve backward-compatible customer behavior during the transition.
-                                    p.mb-0
-                                        strong Phase 2:
-                                        |  Migrate all Archive-tier objects to Infrequent Access, complete the required metadata migration/backfill, and fully remove Archive-tier object support from storage workflows and customer-facing surfaces.
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Complexity
+                                        p.mb-0 Drove a cross-surface storage-tier deprecation spanning public APIs, CLI/Console UX, OLM policy semantics, metadata consistency, metering and retention behavior, MDS backfill, and capacity analytics. The design required careful compatibility decisions because Archive Tier existed at both the bucket and object level, with customer-visible implications across billing, restore behavior, retention, object operations, and lifecycle policies. The solution covered 3 customer interaction surfaces &mdash; Console, CLI, and REST APIs &mdash; and 3 object-tier entry points &mdash; upload, explicit tier modification, and OLM policy transitions &mdash; while separating the MVP customer-facing translation layer from the subsequent metadata backfill.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Complexity
-                                    p.mb-0 Drove a cross-surface storage-tier deprecation spanning public APIs, CLI/Console UX, OLM policy semantics, metadata consistency, metering and retention behavior, MDS backfill, and capacity analytics. The design required careful compatibility decisions because Archive Tier existed at both the bucket and object level, with customer-visible implications across billing, restore behavior, retention, object operations, and lifecycle policies. The solution covered 3 customer interaction surfaces &mdash; Console, CLI, and REST APIs &mdash; and 3 object-tier entry points &mdash; upload, explicit tier modification, and OLM policy transitions &mdash; while separating the MVP customer-facing translation layer from the subsequent metadata backfill.
-
-                                .case-study-block.mb-0
-                                    strong.text-primary.case-study-label Result
-                                    ul.mb-0
-                                        li Simplified OCI Object Storage from a three-tier to a two-tier storage model.
-                                        li Impacted 737 paid Archive-tier customers.
-                                        li Addressed an Archive footprint of approximately 419 PB.
-                                        li Reduced long-term engineering, operational, and support complexity associated with maintaining a dedicated Archive tier.
-                                        li Integrated storage capacity metrics with Horizon, improving capacity forecasting and planning.
+                                    .case-study-block.mb-0
+                                        strong.text-primary.case-study-label Result
+                                        ul.mb-0
+                                            li Simplified OCI Object Storage from a three-tier to a two-tier storage model.
+                                            li Impacted 737 paid Archive-tier customers.
+                                            li Addressed an Archive footprint of approximately 419 PB.
+                                            li Reduced long-term engineering, operational, and support complexity associated with maintaining a dedicated Archive tier.
+                                            li Integrated storage capacity metrics with Horizon, improving capacity forecasting and planning.
 
                             .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
-                                p.font-italic.mb-2 Monolith Decomposition / JDK Upgrade
+                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-monolith-decomposition', role='button', aria-expanded='false', aria-controls='cs-monolith-decomposition')
+                                    span.font-italic Monolith Decomposition / JDK Upgrade
+                                    i.fas.fa-chevron-down.case-study-toggle-icon
+                                #cs-monolith-decomposition.collapse
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Situation
+                                        p.mb-0 Metadata Services (MDS) was part of the Object Storage monolith (Frontend / MDS / Storage / OLM / Auto-Tiering / Garbage Collector), with multiple components intertwined and running on Java 8, creating long build cycles, shared dependency ownership, and risk to OCI-wide JDK 17 compliance. Led the MDS repo split and Java 17 migration strategy across critical Object Storage metadata services while maintaining service reliability and rollout safety.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Situation
-                                    p.mb-0 Metadata Services (MDS) was part of the Object Storage monolith (Frontend / MDS / Storage / OLM / Auto-Tiering / Garbage Collector), with multiple components intertwined and running on Java 8, creating long build cycles, shared dependency ownership, and risk to OCI-wide JDK 17 compliance. Led the MDS repo split and Java 17 migration strategy across critical Object Storage metadata services while maintaining service reliability and rollout safety.
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Action
+                                        p.mb-2 Led a team of five engineers and coordinated with US and IDC subject-matter experts to execute the Java 17 migration across MDS services, including:
+                                        ul.mb-0
+                                            li Drove monolith decomposition by splitting MDS from shared Object Storage code into MDS- and component-owned repositories, stabilizing builds, removing common coupling, and enabling independent service ownership.
+                                            li Sequenced the repo split before the Java 17 migration to reduce dependency blast radius and avoid forcing unrelated Object Storage components through MDS-specific upgrades.
+                                            li Defined the Java 8 / Java 17 compatibility strategy using separate build artifacts and runtime selection, enabling a controlled rollout instead of a flag-day runtime migration.
+                                            li Implemented Java 17 prerequisites, including Prism metrics and Jipher adoption, to satisfy OCI cryptography/FIPS compliance requirements and expose JCE provider usage.
+                                            li Upgraded build, test, and runtime dependencies, including the Maven Compiler Plugin, Mockito, Guice, SpotBugs, Lombok, and service-specific libraries.
+                                            li Updated OCI Build configuration, Docker runtime images, startup scripts, server-check validation, Surefire/Failsafe JVM args, and module-level build steps for Java 17.
+                                            li Authored upgrade guidance and a Casper-wide dependency inventory so other Object Storage teams could follow a consistent migration path.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Action
-                                    p.mb-2 Led a team of five engineers and coordinated with US and IDC subject-matter experts to execute the Java 17 migration across MDS services, including:
-                                    ul.mb-0
-                                        li Drove monolith decomposition by splitting MDS from shared Object Storage code into MDS- and component-owned repositories, stabilizing builds, removing common coupling, and enabling independent service ownership.
-                                        li Sequenced the repo split before the Java 17 migration to reduce dependency blast radius and avoid forcing unrelated Object Storage components through MDS-specific upgrades.
-                                        li Defined the Java 8 / Java 17 compatibility strategy using separate build artifacts and runtime selection, enabling a controlled rollout instead of a flag-day runtime migration.
-                                        li Implemented Java 17 prerequisites, including Prism metrics and Jipher adoption, to satisfy OCI cryptography/FIPS compliance requirements and expose JCE provider usage.
-                                        li Upgraded build, test, and runtime dependencies, including the Maven Compiler Plugin, Mockito, Guice, SpotBugs, Lombok, and service-specific libraries.
-                                        li Updated OCI Build configuration, Docker runtime images, startup scripts, server-check validation, Surefire/Failsafe JVM args, and module-level build steps for Java 17.
-                                        li Authored upgrade guidance and a Casper-wide dependency inventory so other Object Storage teams could follow a consistent migration path.
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Complexity
+                                        p.mb-0 Drove a cross-cutting migration across source layout, Maven reactor dependencies, OCI Build steps, runtime images, JVM flags, deployment validation, and service-level performance qualification. Required handling Java 17 module-boundary issues such as #[code --add-opens] / #[code --add-exports], reflection access, internal JDK APIs, dependency convergence, and runtime-only failures after a successful compile. Required migrating the security provider from BC-FIPS to Jipher, with Prism observability, before moving critical services to Java 17. Touched core MDS services and surrounding components, including Object MDS, Tenant MDS, Operator MDS, Work Request MDS, Schema Service, MDS Canary, Storage Metering, RQS, Garbage Collector, Metadata Rebalancer, CMSP, and Snapshot Publisher &mdash; requiring ownership across architecture sequencing, cross-org coordination, operational excellence, and data-driven rollout qualification.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Complexity
-                                    p.mb-0 Drove a cross-cutting migration across source layout, Maven reactor dependencies, OCI Build steps, runtime images, JVM flags, deployment validation, and service-level performance qualification. Required handling Java 17 module-boundary issues such as #[code --add-opens] / #[code --add-exports], reflection access, internal JDK APIs, dependency convergence, and runtime-only failures after a successful compile. Required migrating the security provider from BC-FIPS to Jipher, with Prism observability, before moving critical services to Java 17. Touched core MDS services and surrounding components, including Object MDS, Tenant MDS, Operator MDS, Work Request MDS, Schema Service, MDS Canary, Storage Metering, RQS, Garbage Collector, Metadata Rebalancer, CMSP, and Snapshot Publisher &mdash; requiring ownership across architecture sequencing, cross-org coordination, operational excellence, and data-driven rollout qualification.
-
-                                .case-study-block.mb-0
-                                    strong.text-primary.case-study-label Result
-                                    ul.mb-0
-                                        li Completed repo split phases for independent MDS ownership, casper-common dependency removal, and build/test optimization.
-                                        li Built a Casper dependency inventory covering approximately 50 Object Storage components across MDS, FE, Storage, SDP, Async, and Webserver paths, and a Java 17 plan tracking roughly 30 MDS modules/components through upgrade and rollout readiness.
-                                        li Object MDS Java 17 performance qualification showed no regression across mixed GET/PUT/LIST/DELETE traffic; mixed-workload throughput improved from 5,567 to 5,897 ops/sec, while GC pause time dropped from 2.63% to 0.00063%.
-                                        li 90% GET / 10% PUT Object MDS testing improved from 9,022 to 10,396 ops/sec, with p99.95 latency improving from 70ms to 35.7ms.
-                                        li Metadata Publisher Java 17 qualification improved CMSP run latency by roughly 14&ndash;15% across ~150M and ~280M object test sets.
+                                    .case-study-block.mb-0
+                                        strong.text-primary.case-study-label Result
+                                        ul.mb-0
+                                            li Completed repo split phases for independent MDS ownership, casper-common dependency removal, and build/test optimization.
+                                            li Built a Casper dependency inventory covering approximately 50 Object Storage components across MDS, FE, Storage, SDP, Async, and Webserver paths, and a Java 17 plan tracking roughly 30 MDS modules/components through upgrade and rollout readiness.
+                                            li Object MDS Java 17 performance qualification showed no regression across mixed GET/PUT/LIST/DELETE traffic; mixed-workload throughput improved from 5,567 to 5,897 ops/sec, while GC pause time dropped from 2.63% to 0.00063%.
+                                            li 90% GET / 10% PUT Object MDS testing improved from 9,022 to 10,396 ops/sec, with p99.95 latency improving from 70ms to 35.7ms.
+                                            li Metadata Publisher Java 17 qualification improved CMSP run latency by roughly 14&ndash;15% across ~150M and ~280M object test sets.
                         .flex-shrink-0
                             span.text-primary February 2021 - Present
 
@@ -154,39 +158,41 @@ html(lang='en')
                                 li Provided an API and CLI option for clients to set the number of days they want data to be stored.
 
                             .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
-                                p.font-italic.mb-2 Seatbelt Execution Output Sweeper
+                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-seatbelt-sweeper', role='button', aria-expanded='false', aria-controls='cs-seatbelt-sweeper')
+                                    span.font-italic Seatbelt Execution Output Sweeper
+                                    i.fas.fa-chevron-down.case-study-toggle-icon
+                                #cs-seatbelt-sweeper.collapse
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Situation
+                                        p.mb-0 Seatbelt is a managed service for executing scripts at scale across hosts, providing safety guardrails, velocity control, monitoring, and other execution controls. When customers execute scripts through Seatbelt, script output and error logs are stored in S3; these logs can contain sensitive or critical data from individual hosts and therefore need to be automatically deleted after an appropriate retention period. The goal of this project was to design and implement an automated mechanism to expire and delete Seatbelt execution logs from S3, reducing data-security and compliance risk while giving customers control over log retention.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Situation
-                                    p.mb-0 Seatbelt is a managed service for executing scripts at scale across hosts, providing safety guardrails, velocity control, monitoring, and other execution controls. When customers execute scripts through Seatbelt, script output and error logs are stored in S3; these logs can contain sensitive or critical data from individual hosts and therefore need to be automatically deleted after an appropriate retention period. The goal of this project was to design and implement an automated mechanism to expire and delete Seatbelt execution logs from S3, reducing data-security and compliance risk while giving customers control over log retention.
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Action
+                                        p.mb-2 Drove the project across four workstreams:
+                                        ul.mb-0
+                                            li
+                                                strong Defined log-retention requirements:
+                                                |  Engaged with recent and frequent customers and EC2 Security Engineers to determine appropriate minimum, maximum, and default values for the Log Expiration Days configuration.
+                                            li
+                                                strong Customer-facing configuration:
+                                                |  Implemented API and CLI changes to allow customers to configure and update Log Expiration Days.
+                                            li
+                                                strong Automated log cleanup:
+                                                |  Implemented multithreaded DJS jobs to identify and delete expired execution logs from S3 and maintain the corresponding Log Deletion Time.
+                                            li
+                                                strong Production execution:
+                                                |  Built the synthesis DJS job using LPT to orchestrate the cleanup workflow at scale.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Action
-                                    p.mb-2 Drove the project across four workstreams:
-                                    ul.mb-0
-                                        li
-                                            strong Defined log-retention requirements:
-                                            |  Engaged with recent and frequent customers and EC2 Security Engineers to determine appropriate minimum, maximum, and default values for the Log Expiration Days configuration.
-                                        li
-                                            strong Customer-facing configuration:
-                                            |  Implemented API and CLI changes to allow customers to configure and update Log Expiration Days.
-                                        li
-                                            strong Automated log cleanup:
-                                            |  Implemented multithreaded DJS jobs to identify and delete expired execution logs from S3 and maintain the corresponding Log Deletion Time.
-                                        li
-                                            strong Production execution:
-                                            |  Built the synthesis DJS job using LPT to orchestrate the cleanup workflow at scale.
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Complexity
+                                        p.mb-2 A key design challenge was performing large-scale log cleanup without increasing database load or affecting processes already running on the same fleet.
+                                        p.mb-2 During design review, I identified that introducing a new indexed Log Expiration Status field could increase database load and negatively impact existing workloads. Instead, I reused an existing indexed status attribute to represent the required state, avoiding the need for an additional database index and reducing the potential impact on fleet performance.
+                                        p.mb-0 I also initially proposed using a separate DJS job as a backup worker for records whose S3 deletion failed. Based on design feedback, I redesigned the workflow to reuse the same DJS job &mdash; first processing newly expired logs, then retrying records that had remained undeleted for more than a day. This eliminated a separate worker, reducing resource and memory consumption while keeping the cleanup and retry logic within a single workflow.
 
-                                .case-study-block
-                                    strong.text-primary.case-study-label Complexity
-                                    p.mb-2 A key design challenge was performing large-scale log cleanup without increasing database load or affecting processes already running on the same fleet.
-                                    p.mb-2 During design review, I identified that introducing a new indexed Log Expiration Status field could increase database load and negatively impact existing workloads. Instead, I reused an existing indexed status attribute to represent the required state, avoiding the need for an additional database index and reducing the potential impact on fleet performance.
-                                    p.mb-0 I also initially proposed using a separate DJS job as a backup worker for records whose S3 deletion failed. Based on design feedback, I redesigned the workflow to reuse the same DJS job &mdash; first processing newly expired logs, then retrying records that had remained undeleted for more than a day. This eliminated a separate worker, reducing resource and memory consumption while keeping the cleanup and retry logic within a single workflow.
-
-                                .case-study-block.mb-0
-                                    strong.text-primary.case-study-label Result
-                                    p.mb-2 The solution applies to all Seatbelt users and automatically manages expiration for approximately 1,000 script executions per day, covering ~40 GB of execution output daily and 1,200+ GB per month across 30K+ execution logs.
-                                    p.mb-0 By automatically expiring and deleting execution output from S3, the solution reduces the exposure window for potentially sensitive host data, lowers S3 storage cost, mitigates data-security and compliance risk, and eliminates the need for manual log cleanup.
+                                    .case-study-block.mb-0
+                                        strong.text-primary.case-study-label Result
+                                        p.mb-2 The solution applies to all Seatbelt users and automatically manages expiration for approximately 1,000 script executions per day, covering ~40 GB of execution output daily and 1,200+ GB per month across 30K+ execution logs.
+                                        p.mb-0 By automatically expiring and deleting execution output from S3, the solution reduces the exposure window for potentially sensitive host data, lowers S3 storage cost, mitigates data-security and compliance risk, and eliminates the need for manual log cleanup.
                         .flex-shrink-0
                             span.text-primary June 2020 - August 2020
 
