@@ -1,0 +1,56 @@
+- var page = 'additional-academic-projects'
+- var pageTitle = 'Additional Academic Projects - Abhiraj Smit'
+
+doctype html
+html(lang='en')
+
+    include includes/head.pug
+
+    body#page-top
+
+        include includes/nav.pug
+
+        // Page Content
+        .container-fluid.p-0
+
+            section#additional-academic-projects.resume-section
+                .resume-section-content
+                    h2.mb-5 Additional Academic Projects
+
+                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-4
+                        .flex-grow-1
+                            h3.mb-0 Music Service Website
+                            ul.mb-0.mt-2
+                                li Developed a music streaming website hosted on the college network, with options to add songs and build personalized playlists.
+                                li Delivered back-end RESTful APIs to download songs in this interactive web application.
+                                li Made the website and hosted it on LAN at college over a personal IP, comprising a songs playlist shared by users.
+                        .flex-shrink-0
+                            span.text-primary Feb 2015 - Apr 2015
+
+                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-4
+                        .flex-grow-1
+                            h3.mb-0 Networking and Website Designing
+                            .subheading.mb-2 Netcamp Summer Training
+                            ul.mb-0
+                                li Worked on Samba file transfer between Red Hat Linux (on VMware) and Windows, including permission settings.
+                                li Configured mail transfer using Webmin (primarily GUI-based administration).
+                        .flex-shrink-0
+                            span.text-primary 2015
+
+                    .d-flex.flex-column.flex-md-row.justify-content-between
+                        .flex-grow-1
+                            h3.mb-0 Airline Reservation System (ARS)
+                            p.mt-2 Replicated an airline website with core features including ticket booking and cancellation, flight enquiries, pricing for flights over the next 2 weeks, PNR checking, and online check-in, along with several other functions.
+                            p.mb-0 Built on a WAMP server using PHP, HTML, CSS (basic), MySQL (database), JavaScript (basic) and Ajax (basic).
+                        .flex-shrink-0
+                            span.text-primary May 2014 - Present
+
+        // Bootstrap core JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js')
+
+        // Third party plugin JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js')
+
+        // Core theme JS
+        script(src='js/scripts.js')
