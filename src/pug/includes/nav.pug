@@ -1,7 +1,7 @@
-- var subPages = ['education', 'awards', 'extracurricular', 'responsibility']
+- var subPages = ['education', 'awards', 'extracurricular', 'responsibility', 'geeksforgeeks']
 - var onSubPage = (typeof page !== 'undefined' && subPages.indexOf(page) !== -1)
 - var onEducation = (typeof page !== 'undefined' && page === 'education')
-- var pageHeadings = { awards: 'Awards & Achievements', extracurricular: 'Extra Curricular Activities', responsibility: 'Responsibility' }
+- var pageHeadings = { awards: 'Awards & Achievements', extracurricular: 'Extra Curricular Activities', responsibility: 'Responsibility', geeksforgeeks: 'GeeksforGeeks Contributions' }
 
 nav#sideNav.navbar.navbar-expand-lg.navbar-light.bg-white.fixed-top
     a.navbar-brand.js-scroll-trigger(href=onSubPage ? 'index.html#page-top' : '#page-top')
@@ -50,6 +50,7 @@ nav#sideNav.navbar.navbar-expand-lg.navbar-light.bg-white.fixed-top
                         a.dropdown-item.js-scroll-trigger(href='awards.html') Awards &amp; Achievements
                         a.dropdown-item.js-scroll-trigger(href='extracurricular.html') Extra Curricular Activities
                         a.dropdown-item.js-scroll-trigger(href='responsibility.html') Responsibility
+                        a.dropdown-item.js-scroll-trigger(href='geeksforgeeks.html') GeeksforGeeks Contributions
         // hitwebcounter Code START
         a(href='https://www.hitwebcounter.com', target='_blank')
             img(src='https://hitwebcounter.com/counter/counter.php?page=7671208&style=0025&nbdigits=5&type=page&initCount=0', title='Total Website Hits', alt='Web Hits', border='0')

@@ -1,0 +1,79 @@
+- var page = 'geeksforgeeks'
+- var pageTitle = 'GeeksforGeeks Contributions - Abhiraj Smit'
+
+doctype html
+html(lang='en')
+
+    include includes/head.pug
+
+    body#page-top
+
+        include includes/nav.pug
+
+        // Page Content
+        .container-fluid.p-0
+
+            section#geeksforgeeks.resume-section
+                .resume-section-content
+                    h2.mb-5 GeeksforGeeks Contributions
+                    p.mb-5 A selection of interview-prep videos and technical articles I contributed to GeeksforGeeks as a Software Developer Intern / Algorithmic Problem Setter.
+
+                    h3.mb-3 Videos
+                    ul.fa-ul.mb-5
+                        li
+                            span.fa-li
+                                i.fas.fa-video.text-primary
+                            a(href='https://www.youtube.com/watch?v=IiCChMYfKpw', target='_blank', rel='noopener') Cracking On-Campus Interviews &mdash; Part 1 | SDE Interview Experiences | GeeksforGeeks
+                        li
+                            span.fa-li
+                                i.fas.fa-video.text-primary
+                            a(href='https://www.youtube.com/watch?v=WuBzEnsszxs', target='_blank', rel='noopener') Cracking On-Campus Interviews &mdash; Part 2 | SDE Interview Experiences | GeeksforGeeks
+                        li
+                            span.fa-li
+                                i.fas.fa-video.text-primary
+                            a(href='https://www.facebook.com/geeksforgeeks.org/videos/459282591502245/', target='_blank', rel='noopener') GeeksforGeeks Facebook Live session
+
+                    h3.mb-3 Articles
+                    ul.fa-ul.mb-0
+                        li
+                            span.fa-li
+                                i.fas.fa-file-alt.text-primary
+                            a(href='https://www.geeksforgeeks.org/dsa/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum/', target='_blank', rel='noopener') Partition a Set into Two Subsets Such That the Difference of Subset Sums Is Minimum
+                        li
+                            span.fa-li
+                                i.fas.fa-file-alt.text-primary
+                            a(href='https://www.geeksforgeeks.org/dsa/matrix-exponentiation/', target='_blank', rel='noopener') Matrix Exponentiation
+                        li
+                            span.fa-li
+                                i.fas.fa-file-alt.text-primary
+                            a(href='https://www.geeksforgeeks.org/dsa/count-inversions-of-size-three-in-a-give-array/', target='_blank', rel='noopener') Count Inversions of Size Three in a Given Array
+                        li
+                            span.fa-li
+                                i.fas.fa-file-alt.text-primary
+                            a(href='https://www.geeksforgeeks.org/cpp/counting-inversions-using-set-in-c-stl/', target='_blank', rel='noopener') Counting Inversions Using Set in C++ STL
+                        li
+                            span.fa-li
+                                i.fas.fa-file-alt.text-primary
+                            a(href='https://www.geeksforgeeks.org/dsa/program-for-newton-raphson-method/', target='_blank', rel='noopener') Program for Newton Raphson Method
+                        li
+                            span.fa-li
+                                i.fas.fa-file-alt.text-primary
+                            a(href='https://www.geeksforgeeks.org/dsa/program-for-bisection-method/', target='_blank', rel='noopener') Bisection Method
+                        li
+                            span.fa-li
+                                i.fas.fa-file-alt.text-primary
+                            a(href='https://www.geeksforgeeks.org/interview-experiences/program-for-method-of-false-position/', target='_blank', rel='noopener') Program for Method of False Position
+                        li
+                            span.fa-li
+                                i.fas.fa-file-alt.text-primary
+                            a(href='https://www.geeksforgeeks.org/dsa/introduction-to-linear-data-structures/', target='_blank', rel='noopener') Introduction to Linear Data Structures
+
+        // Bootstrap core JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js')
+
+        // Third party plugin JS
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js')
+
+        // Core theme JS
+        script(src='js/scripts.js')
