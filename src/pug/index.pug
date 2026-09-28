@@ -63,6 +63,40 @@ html(lang='en')
                                 li Designed idempotent, lease-based batch automation that processed 76,946 repairs across 2,025 racks, safely coordinating inventory, custody, customer visibility, ticketing, and post-repair validation.
                                 li Led two engineers in onboarding 30 datasets to a standardized analytics platform, resulting in 34 production pipelines that exported more than 15.5 million repair-domain records for leadership forecasting and operational planning.
                                 li Authored the architecture for a multi-stage rack-frame repair workflow spanning five stakeholder groups, eight major state transitions, five APIs, 36 transferred components, and 27 validated devices.
+
+                            .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
+                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-gb200-link-triage', role='button', aria-expanded='false', aria-controls='cs-gb200-link-triage')
+                                    span.font-italic GB200 GPU-to-Leaf Triage Framework
+                                    i.fas.fa-chevron-down.case-study-toggle-icon
+                                #cs-gb200-link-triage.collapse
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Situation
+                                        p.mb-2 With rapid GB200 fleet expansion and increasing rack deployment, GPU-to-leaf connectivity failures became a high-impact operational risk. Customers did not have a precise mechanism to report GPU-to-leaf link failures. Issues were often surfaced broadly as GB200 server failures, even when the underlying failure domain was a degraded or failed GPU &harr; BLEAF/FLEAF path.
+                                        p.mb-2 Without early link-level identification, teams could not consistently apply the appropriate link-specific SOPs. This often resulted in broader Compute Tray Replacement before the GPU-to-leaf failure was isolated, increasing hardware handling and repair costs and contributing to customer-credit exposure for unavailable rack capacity.
+                                        p.mb-0 TPMs also had to manually coordinate across CHS/DCO, hardware teams, software teams, and repair owners to identify the impacted rack, server, GPU, switch, cable path, and remediation plan. This increased manual operational effort, slowed triage, and created ambiguity around repair ownership.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Action
+                                        ul.mb-0
+                                            li Architected the end-to-end #[code GB200_LINK_REPAIR] workflow for both customer-facing and internal repair orders.
+                                            li Established cross-team alignment across CHS/on-ground operations, CPV Tier 1, Repair Platform, Warminator, and TPM stakeholders, defining the triage model, ownership boundaries, required software validations, and hardware remediation actions.
+                                            li Designed and developed the CHS repair UI to perform targeted component replacement and the TPM interface to track repair status throughout the workflow.
+                                            li Developed Warminator validation probes to validate repaired links before returning the Compute Tray to the customer.
+                                            li Enabled CHS to perform targeted GPU-to-leaf repairs by replacing only the affected interface or link-path component &mdash; including transceivers, cables, shuffles, and related components &mdash; instead of defaulting to Compute Tray replacement.
+                                            li Added an option to RMA individual link components, further reducing the need for broader hardware replacement.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Complexity
+                                        p.mb-2 Required coordination across multiple engineering and operational organizations, each with different systems, workflows, ownership boundaries, and operational requirements. Integrated the GB200 Link Repair workflow across 7+ backend systems/organizations, requiring alignment on APIs, repair states, hardware actions, validation, and ownership.
+                                        p.mb-0 Drove cross-team agreement on the triage and remediation model, ensuring that software diagnostics, physical repair actions, and repair-platform state remained consistent throughout the lifecycle. Partnered with leadership to define usage patterns, API surfaces, link-repair specifications, and the issue-reporting process.
+
+                                    .case-study-block.mb-0
+                                        strong.text-primary.case-study-label Result
+                                        ul.mb-0
+                                            li Eliminated significant manual handoffs between customers, TPMs, and multiple repair teams, reducing a process that could take weeks to resolve a single link-repair issue.
+                                            li Accelerated identification and resolution of GPU-to-leaf connectivity failures, enabling targeted component repair rather than broader Compute Tray replacement.
+                                            li Reduced unnecessary hardware handling and repair scope and helped lower customer-credit exposure associated with unavailable rack capacity.
+                                            li Scaled the workflow to repair 9,191 distinct interfaces across 8,449 compute trays over 7+ months, spanning 7+ backend systems/organizations.
                             p.font-italic.mb-2.mt-4 Object Storage
                             ul
                                 li Designed and productionized automated database-index rebuilding for high-scale metadata shards, eliminating approximately 90 engineer-hours of manual work per month in one region, reclaiming storage, preventing customer-facing listing failures, and reclaiming over 1,000+ PB of data across all regions over 3 years.
