@@ -104,6 +104,75 @@ html(lang='en')
                                             li The Regional Metrics Aggregator design supported read, write, and list operation classes with per-minute host-level aggregation for regional statistics.
 
                             .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
+                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-mds-embargo', role='button', aria-expanded='false', aria-controls='cs-mds-embargo')
+                                    span.font-italic MDS Embargo / ObjectMDS Throttling
+                                    i.fas.fa-chevron-down.case-study-toggle-icon
+                                #cs-mds-embargo.collapse
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Situation
+                                        p.mb-0 ObjectMDS shards needed protection from noisy-neighbor traffic and request overload at the tenant, namespace, and API levels. Without appropriate request limits, high request rates or expensive request patterns could increase metadata DB pressure, heap/GC activity, and latency, potentially impacting shard availability. Designed and implemented default embargo rules for GET, PUT, and LIST paths to protect ObjectMDS before elevated traffic could result in customer-facing latency or availability degradation.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Action
+                                        ul.mb-0
+                                            li Implemented MDS Embargo as a default shard-protection mechanism using EmbargoV3 rules for ObjectMDS.
+                                            li Created per-namespace default rules for the three core operation groups: read, write, and list.
+                                            li Defined and operationalized regional limits of 25K RPS for reads, 3K RPS for writes, and 2K RPS for lists, translating regional limits into per-host/per-shard rates based on the regional ObjectMDS host count.
+                                            li Used controlled HTTP 429 throttling to protect metadata DB availability rather than allowing unbounded request admission to overload MDS.
+                                            li Drove the CAPA investigation and remediation after duplicate default-rule creation caused an IAD impact. Disabled automatic rule creation, added duplicate-rule detection, introduced safer #[code casper-go] commands, updated CM templates, and redesigned the Rules Manager flow.
+                                            li Reworked the re-enable strategy with configuration-gated rollout, validation dashboards, heap-space checks, and rollback controls.
+                                            li Extended the design toward stronger noisy-neighbor fairness and dynamic protection, including per-region rate calculation, DNS/ODO-based host-count discovery, polling-based host-count updates, and future concurrency/dynamic throttling mechanisms.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Complexity
+                                        p.mb-2 Owned a Tier-1 operational safety mechanism on the Object Storage metadata request path, where overly permissive limits could overload MDS while overly aggressive throttling could unnecessarily reject valid customer traffic. Required deep understanding of ObjectMDS request flow, EmbargoV3 rule evaluation, Operator Service Rules Manager, regional host/shard topology, DB connection pools, heap/GC behavior, and CM rollout mechanics.
+                                        p.mb-2 Balanced customer protection and operational safety, protecting shard availability while minimizing unnecessary 429 responses for large tenants. Led CAPA-level analysis of duplicate rule creation, heap growth, GC pauses, rule memory consumption, Operator Service restart behavior, and stale CM-template assumptions.
+                                        p.mb-0 Coordinated across ObjectMDS, Operator Service, #[code casper-go], EmbargoV3, ODO/DNS host discovery, Grafana, CM templates, frontend rollout, and future WebServer concurrency throttling. Evaluated multiple throttling approaches, including static request-rate embargo, concurrent-request throttling, dynamic throttling, and noisy-neighbor fairness, while identifying gaps from services that access ObjectDB outside ObjectMDS.
+
+                                    .case-study-block.mb-0
+                                        strong.text-primary.case-study-label Result
+                                        ul.mb-0
+                                            li During the IAD CAPA event, 4,537 Object Storage customers experienced intermittent increased latency for approximately 133 minutes across GET, PUT, and LIST operations.
+                                            li p99 latency reached 21.24 seconds across the three APIs, while MDS host availability dropped to 98.5% during the event.
+                                            li IAD operated with 66 shards and 50 ObjectMDS hosts. The default configuration created 198 rules per host: 66 shards &times; 3 API groups.
+                                            li Each wildcard namespace rule consumed approximately 18 MB of heap. Three rules per shard consumed approximately 54 MB, resulting in approximately 3.5 GB across 66 shards, or ~29.1% of a 12 GB heap.
+                                            li Duplicate old and new rules increased heap consumption to approximately 7 GB, driving heap utilization from ~66% to 92% and causing GC pauses.
+                                            li Re-enable rollout was instrumented with regional CM/change-ticket tracking, pre/post heap validation, and EmbargoV3 dashboards to verify safe deployment.
+
+                            .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
+                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-index-rebuild', role='button', aria-expanded='false', aria-controls='cs-index-rebuild')
+                                    span.font-italic Index Rebuild
+                                    i.fas.fa-chevron-down.case-study-toggle-icon
+                                #cs-index-rebuild.collapse
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Situation
+                                        p.mb-0 Frequent customer PUTs, bucket migrations, and deletes cause fragmentation within database shards, making indexes increasingly inefficient over time. This resulted in index bloat, tablespace pressure, increased disk utilization, and customer-impacting List latency/failures.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Action
+                                        ul.mb-0
+                                            li Identified and proposed an automated index rebuild solution to reclaim fragmented index space and return recovered capacity for Object Storage usage.
+                                            li Independently owned the product lifecycle, from architecture and design through implementation, testing, rollout, monitoring, and production support.
+                                            li Developed a feature-based priority-queue algorithm for partition selection, optimizing rebuild ordering based on expected space reclamation.
+                                            li Added listing-failure-aware prioritization to prioritize partitions associated with customer-impacting failures.
+                                            li Improved temporary-space and buffer-factor calculations in collaboration with DbPerf to make rebuilds safer and more predictable.
+                                            li Added database-version gates and de-mirrored shard support, along with partition-level dashboards, metrics, alarms, rollout documentation, testing, and production bug fixes.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Complexity
+                                        p.mb-2 Required deep ownership across Object Metadata DB internals, OLM listing paths, Oracle index-rebuild behavior, temporary-space constraints, DbPerf/IOD dependencies, T2 metrics, Grafana dashboards, Metadata Rebalancer lifecycle, regional rollout, alerting, and operator workflows.
+                                        p.mb-0 The solution also required balancing space reclamation, rebuild safety, temporary storage requirements, customer-facing listing failures, and continuous production workloads when determining which partitions to rebuild and in what order.
+
+                                    .case-study-block.mb-0
+                                        strong.text-primary.case-study-label Result
+                                        ul.mb-0
+                                            li The previous manual process required approximately 2 hours per index rebuild. IAD alone required 45 manual partition rebuilds in 30 days, representing approximately 90 hours of developer/on-call effort.
+                                            li Automated and continuously optimized rebuild selection to prioritize partitions based on space reclamation potential and customer impact.
+                                            li Example: In GRU, partition SYS_P2143 was reduced from 87.1 GB to 190 KB, with temporary space requirements reduced to approximately 200 KB.
+                                            li The system supports high-scale indexes such as Bucket ID and Object Name, including an observed ~1.06 TB index on a 5.87 TB table.
+                                            li Over the past two years, the automation has recovered more than ~1,000 PB of cumulative space across OC1 regions.
+
+                            .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
                                 a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-archive-tier-sunset', role='button', aria-expanded='false', aria-controls='cs-archive-tier-sunset')
                                     span.font-italic Archive Tier Sunset
                                     i.fas.fa-chevron-down.case-study-toggle-icon
@@ -178,39 +247,6 @@ html(lang='en')
                                             li Object MDS Java 17 performance qualification showed no regression across mixed GET/PUT/LIST/DELETE traffic; mixed-workload throughput improved from 5,567 to 5,897 ops/sec, while GC pause time dropped from 2.63% to 0.00063%.
                                             li 90% GET / 10% PUT Object MDS testing improved from 9,022 to 10,396 ops/sec, with p99.95 latency improving from 70ms to 35.7ms.
                                             li Metadata Publisher Java 17 qualification improved CMSP run latency by roughly 14&ndash;15% across ~150M and ~280M object test sets.
-
-                            .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
-                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-index-rebuild', role='button', aria-expanded='false', aria-controls='cs-index-rebuild')
-                                    span.font-italic Index Rebuild
-                                    i.fas.fa-chevron-down.case-study-toggle-icon
-                                #cs-index-rebuild.collapse
-                                    .case-study-block
-                                        strong.text-primary.case-study-label Situation
-                                        p.mb-0 Frequent customer PUTs, bucket migrations, and deletes cause fragmentation within database shards, making indexes increasingly inefficient over time. This resulted in index bloat, tablespace pressure, increased disk utilization, and customer-impacting List latency/failures.
-
-                                    .case-study-block
-                                        strong.text-primary.case-study-label Action
-                                        ul.mb-0
-                                            li Identified and proposed an automated index rebuild solution to reclaim fragmented index space and return recovered capacity for Object Storage usage.
-                                            li Independently owned the product lifecycle, from architecture and design through implementation, testing, rollout, monitoring, and production support.
-                                            li Developed a feature-based priority-queue algorithm for partition selection, optimizing rebuild ordering based on expected space reclamation.
-                                            li Added listing-failure-aware prioritization to prioritize partitions associated with customer-impacting failures.
-                                            li Improved temporary-space and buffer-factor calculations in collaboration with DbPerf to make rebuilds safer and more predictable.
-                                            li Added database-version gates and de-mirrored shard support, along with partition-level dashboards, metrics, alarms, rollout documentation, testing, and production bug fixes.
-
-                                    .case-study-block
-                                        strong.text-primary.case-study-label Complexity
-                                        p.mb-2 Required deep ownership across Object Metadata DB internals, OLM listing paths, Oracle index-rebuild behavior, temporary-space constraints, DbPerf/IOD dependencies, T2 metrics, Grafana dashboards, Metadata Rebalancer lifecycle, regional rollout, alerting, and operator workflows.
-                                        p.mb-0 The solution also required balancing space reclamation, rebuild safety, temporary storage requirements, customer-facing listing failures, and continuous production workloads when determining which partitions to rebuild and in what order.
-
-                                    .case-study-block.mb-0
-                                        strong.text-primary.case-study-label Result
-                                        ul.mb-0
-                                            li The previous manual process required approximately 2 hours per index rebuild. IAD alone required 45 manual partition rebuilds in 30 days, representing approximately 90 hours of developer/on-call effort.
-                                            li Automated and continuously optimized rebuild selection to prioritize partitions based on space reclamation potential and customer impact.
-                                            li Example: In GRU, partition SYS_P2143 was reduced from 87.1 GB to 190 KB, with temporary space requirements reduced to approximately 200 KB.
-                                            li The system supports high-scale indexes such as Bucket ID and Object Name, including an observed ~1.06 TB index on a 5.87 TB table.
-                                            li Over the past two years, the automation has recovered more than ~1,000 PB of cumulative space across OC1 regions.
                         .flex-shrink-0
                             span.text-primary February 2021 - Present
 
