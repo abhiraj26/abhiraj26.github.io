@@ -72,6 +72,38 @@ html(lang='en')
                                 li Designed and hardened tenant-, namespace-, and API-level overload protection for a Tier-1 metadata request path, adding controlled throttling, rollout gates, validation dashboards, alarms, and rollback mechanisms.
 
                             .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
+                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-load-heuristic-rebalancing', role='button', aria-expanded='false', aria-controls='cs-load-heuristic-rebalancing')
+                                    span.font-italic Load Heuristic Rebalancing
+                                    i.fas.fa-chevron-down.case-study-toggle-icon
+                                #cs-load-heuristic-rebalancing.collapse
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Situation
+                                        p.mb-0 ObjectMDS (Metadata Services) was experiencing latency SLO failures driven by uneven bucket load distribution across shards. The existing Metadata Rebalancer primarily supported space-based rebalancing and could not identify buckets that were driving high request load or shard latency. This created a need for a load-heuristic rebalancing path that could proactively identify high-load buckets and move/reshard them from hot shards to lower-load shards before they contributed to degraded customer experience or tenant unavailability.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Action
+                                        ul.mb-0
+                                            li Demonstrated customer focus by targeting ListObjects and write-path latency, which directly contributes to Object Storage SLO performance.
+                                            li Designed a Regional Metrics Aggregation architecture to generate region-level bucket load statistics from ObjectMDS logs across hosts.
+                                            li Defined the V1 load-based resharding algorithm, using ListObjects request rates and high/low shard latency signals to identify candidate buckets and target shards.
+                                            li Integrated load-based decisioning with the existing space-based Metadata Rebalancer safety checks, avoiding a separate migration path and preserving existing operational safeguards.
+                                            li Designed the solution for future extensibility, allowing additional metrics such as slow writes, database latency, response codes, and operation-specific filters to be incorporated into load-based decisions.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Complexity
+                                        p.mb-2 Drove the design of a business-critical operational subsystem affecting Object Storage SLOs and overall MDS fleet health. Required cross-system reasoning across ObjectMDS, ThrottlerService/TopK metrics, T2, MetadataRebalancer, bucket migration/resharding, CDB/PDB shard utilization, and existing space-based rebalancing.
+                                        p.mb-2 Accounted for T2 cardinality and query limits, Lumberjack ingestion lag, per-shard bucket attribution, and the need to avoid interference with active bucket migrations. Designed coordination between load-based and space-based rebalancing so that load-driven migrations would not move traffic onto shards that were already poor candidates for other rebalancing decisions.
+                                        p.mb-0 Evaluated alternative approaches and selected an extensible MVP that reused existing safety checks, minimizing operational blast radius while enabling a new class of rebalancing decisions.
+
+                                    .case-study-block.mb-0
+                                        strong.text-primary.case-study-label Result
+                                        ul.mb-0
+                                            li Object Storage carries a 99.95% customer-facing success-rate SLO, with latency SLO misses counted as failures; source data showed recurring misses, including RenameObject frequently exceeding the 0.05% failure threshold and DeleteObject reaching 0.078%.
+                                            li Prior manual bucket rebalancing required 1+ hour per bucket, with at least one engineer per week dedicated to high-priority manual rebalancing.
+                                            li V1 focused on ListObjects load, using top list-request buckets and high/low list-latency shard signals, while leveraging existing resharding safety checks.
+                                            li The Regional Metrics Aggregator design supported read, write, and list operation classes with per-minute host-level aggregation for regional statistics.
+
+                            .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
                                 a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-archive-tier-sunset', role='button', aria-expanded='false', aria-controls='cs-archive-tier-sunset')
                                     span.font-italic Archive Tier Sunset
                                     i.fas.fa-chevron-down.case-study-toggle-icon
@@ -146,6 +178,39 @@ html(lang='en')
                                             li Object MDS Java 17 performance qualification showed no regression across mixed GET/PUT/LIST/DELETE traffic; mixed-workload throughput improved from 5,567 to 5,897 ops/sec, while GC pause time dropped from 2.63% to 0.00063%.
                                             li 90% GET / 10% PUT Object MDS testing improved from 9,022 to 10,396 ops/sec, with p99.95 latency improving from 70ms to 35.7ms.
                                             li Metadata Publisher Java 17 qualification improved CMSP run latency by roughly 14&ndash;15% across ~150M and ~280M object test sets.
+
+                            .case-study.mt-4.ml-3.p-3.bg-light.border-left.border-primary(style='border-left-width: 4px !important;')
+                                a.case-study-toggle.d-flex.align-items-center.justify-content-between.collapsed(data-toggle='collapse', href='#cs-index-rebuild', role='button', aria-expanded='false', aria-controls='cs-index-rebuild')
+                                    span.font-italic Index Rebuild
+                                    i.fas.fa-chevron-down.case-study-toggle-icon
+                                #cs-index-rebuild.collapse
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Situation
+                                        p.mb-0 Frequent customer PUTs, bucket migrations, and deletes cause fragmentation within database shards, making indexes increasingly inefficient over time. This resulted in index bloat, tablespace pressure, increased disk utilization, and customer-impacting List latency/failures.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Action
+                                        ul.mb-0
+                                            li Identified and proposed an automated index rebuild solution to reclaim fragmented index space and return recovered capacity for Object Storage usage.
+                                            li Independently owned the product lifecycle, from architecture and design through implementation, testing, rollout, monitoring, and production support.
+                                            li Developed a feature-based priority-queue algorithm for partition selection, optimizing rebuild ordering based on expected space reclamation.
+                                            li Added listing-failure-aware prioritization to prioritize partitions associated with customer-impacting failures.
+                                            li Improved temporary-space and buffer-factor calculations in collaboration with DbPerf to make rebuilds safer and more predictable.
+                                            li Added database-version gates and de-mirrored shard support, along with partition-level dashboards, metrics, alarms, rollout documentation, testing, and production bug fixes.
+
+                                    .case-study-block
+                                        strong.text-primary.case-study-label Complexity
+                                        p.mb-2 Required deep ownership across Object Metadata DB internals, OLM listing paths, Oracle index-rebuild behavior, temporary-space constraints, DbPerf/IOD dependencies, T2 metrics, Grafana dashboards, Metadata Rebalancer lifecycle, regional rollout, alerting, and operator workflows.
+                                        p.mb-0 The solution also required balancing space reclamation, rebuild safety, temporary storage requirements, customer-facing listing failures, and continuous production workloads when determining which partitions to rebuild and in what order.
+
+                                    .case-study-block.mb-0
+                                        strong.text-primary.case-study-label Result
+                                        ul.mb-0
+                                            li The previous manual process required approximately 2 hours per index rebuild. IAD alone required 45 manual partition rebuilds in 30 days, representing approximately 90 hours of developer/on-call effort.
+                                            li Automated and continuously optimized rebuild selection to prioritize partitions based on space reclamation potential and customer impact.
+                                            li Example: In GRU, partition SYS_P2143 was reduced from 87.1 GB to 190 KB, with temporary space requirements reduced to approximately 200 KB.
+                                            li The system supports high-scale indexes such as Bucket ID and Object Name, including an observed ~1.06 TB index on a 5.87 TB table.
+                                            li Over the past two years, the automation has recovered more than ~1,000 PB of cumulative space across OC1 regions.
                         .flex-shrink-0
                             span.text-primary February 2021 - Present
 
